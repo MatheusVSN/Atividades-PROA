@@ -20,3 +20,7 @@ O site atualmente, está bem melhor e mais acessível do que nas primeiras vers�
 > Que melhorias você faria nesse site para que ele pudesse ser mais interessante para um público jovem, de periferia, que não está acostumado ao uso de Internet por computadores e não tem interesses por notícias. 
 
 Acredito que fazer o site ficar mais objetivo e claro, deixaria o site bem melhor em termos de acessibilidade, pois a versão atual é poluída com muitos blocos de notícias. Minha solução seria organizar todos em uma lista, com suas respectivas imagens para dar um contexto mais amplo do que está acontecendo e na parte da notícia principal. A partir do momento que você informa direto o usuário sobre oque ele está procurando indo direto ao ponto, ele economizará mais tempo e faz sua experiência ficar muito melhor.
+
+> Por último, crie um protótipo do figma (ou outra ferramenta de prototipagem) - ou mesmo um rascunho feito a mão - com aquilo que você acha que pode ser melhor executado nesta página hoje em dia.
+
+https://www.figma.com/proto/qpvkq7bzBR6LkLUR9OJV0E/Untitled?node-id=3%3A7&starting-point-node-id=3%3A7&scaling=scale-down
