@@ -5,6 +5,7 @@
 ### Encontre um site sobre notícias de fora do Brasil e que não fale português, com pelo menos vinte anos de existência e compare as versões de cada cinco anos ### respondendo as perguntas que estão abaixo. Lembre-se o propósito de um site nem sempre é claro, então sinta-se a vontade  
 
 > Qual era o o propósito inicial do site? 
+
 O proposito do site é informar aos seus usuarios sobre as notícias e eventos que estão acontecendo tanto nos Estados Unidos, como no mundo.
 
 > O site propósito mudou ao longo do tempo?
