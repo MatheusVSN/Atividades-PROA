@@ -17,7 +17,7 @@ nav p {
     padding: 1vh;
 }
 
-.welcomer p { 
+.welcomer h2 { 
     text-align: justify;
     font: bolder;
     font-size: 40px;
@@ -26,11 +26,20 @@ nav p {
     padding: 50px 0px 0px 50px;
 }
 
+.welcomer p {
+    text-align: justify;
+    font: bolder;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    padding: 25px 0px 0px 50px;
+}
+
 .container {
     display: flex;
     flex-direction: row;
 	flex-wrap: wrap;
-    justify-content:space-evenly;
+    justify-content: flex-start;
 	align-items: center;
 	margin-top: 30px;
 }
@@ -41,6 +50,7 @@ nav p {
 	margin-bottom: 30px;
 	background-color: #f1f1f1;
 	box-sizing: border-box;
+    margin: 4px;
 }
 
 .music img {
