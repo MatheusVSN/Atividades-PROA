@@ -46,36 +46,42 @@ nav p {
 
 .music {
     width: 300px;
-	height: 400px;
+    height: 200px;
 	margin-bottom: 30px;
-	background-color: #f1f1f1;
-	box-sizing: border-box;
+    box-sizing: border;
     margin: 4px;
 }
 
 .music img {
     width: 100%;
-	height: 200px;
+	height: 100%;
 	object-fit: cover;
-	margin-bottom: 20px;
-    mask-image: linear-gradient(to top, transparent 0%, black 25%);
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 25%);
+	margin-bottom: 10px;
 }
 
 .music h3 {
-    margin-top: 0;
-	font-size: 20px;
+	font-size: 24px;
+    font-size: 1vw;
 	font-weight: bold;
 	text-align: center;
+    margin-bottom: 12px;
 }
 
 .music p {
-    margin-bottom: 0;
-	font-size: 12px;
+	font-size: 18px;
+    font-size: 1vw;
 	text-align: center;
+    max-height: 10px;
 }
 
-audio {
-    width: 100%;
-    margin-top: 70px;
+.music audio {
+    margin-top: 40px;
+    background-color: white;
+    color: white;
+}
+
+audio::-webkit-media-controls-play-button,
+     audio::-webkit-media-controls-panel {
+     background-color: white;
+     color: white;
 }
