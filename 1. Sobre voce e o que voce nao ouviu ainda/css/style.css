@@ -58,21 +58,20 @@ nav p {
 	height: 200px;
 	object-fit: cover;
 	margin-bottom: 20px;
-    /* agradeço ao meu patrocionador(chat gpt) para fazer isso possível 🤝 */
     mask-image: linear-gradient(to top, transparent 0%, black 25%);
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 25%);
 }
 
 .music h3 {
     margin-top: 0;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
 }
 
 .music p {
     margin-bottom: 0;
-	font-size: 18px;
+	font-size: 12px;
 	text-align: center;
 }
 
