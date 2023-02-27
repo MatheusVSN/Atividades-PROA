@@ -1,6 +1,5 @@
 body {
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(150,150,150,1) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(150,150,150,1) 75%);
 }
 
 nav {
@@ -39,22 +38,23 @@ nav p {
     display: flex;
     flex-direction: row;
 	flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: flex;
 	align-items: center;
 	margin-top: 30px;
 }
 
 .music {
     width: 300px;
-    height: 200px;
+    height: 300px;
 	margin-bottom: 30px;
-    box-sizing: border;
+    box-sizing: border-box;
     margin: 4px;
+    background-color: white;
 }
 
 .music img {
     width: 100%;
-	height: 100%;
+	height: 200px;
 	object-fit: cover;
 	margin-bottom: 10px;
 }
@@ -68,10 +68,11 @@ nav p {
 }
 
 .music p {
+    margin-top: 0;
 	font-size: 18px;
     font-size: 1vw;
 	text-align: center;
-    max-height: 10px;
+    max-height: 10px
 }
 
 .music audio {
