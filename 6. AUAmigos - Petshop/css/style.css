@@ -1,0 +1,178 @@
+* {
+    font-family: "Roboto",sans-serif;;
+}
+
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    width: 100%;
+
+    position: fixed;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a, p {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+
+nav li p {
+    margin: 0;
+}
+
+nav li.right {
+    float: right;
+}
+
+nav li a:hover:not(.active):not(.cant) {
+    background-color: #111;
+    color: white;
+    transition: all 0.15s ease-in-out;
+}
+
+nav li a.active {
+    background-color: #4CAF50;
+}
+
+header {
+    background-image: url("../images/dog.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh;
+    overflow: hidden;
+}
+
+header h1 {
+    color:  #4CAF50;
+    font-size: 50px;
+    padding: 70px 0px 0px 50px;
+}
+
+header h2 {
+    color: #4CAF50;
+    font-size: 30px;
+    padding: 0px 0px 0px 50px;
+}
+
+header h3 {
+    color: #111;
+    font-size: 20px;
+    padding: 0px 0px 0px 50px;
+    width: 30vw;
+}
+
+.about {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.about img {
+    padding: 50px 0px 0px 50px;
+    height: 500px;
+    width: 700px;
+    float: left;
+}
+
+
+.about p.sobre {
+    color: #4CAF50;
+    padding: 50px 0px 0px 50px;
+    font-size: 20px;
+}
+
+.about p.descricao, p.nossotrabalho {
+    padding: 0px 50px 0px 50px;
+    display: flex;
+    text-align: left;
+    font-size: 50px;
+    margin: 10px;
+
+    color: white;
+}
+
+.about p.nossotrabalho {
+    padding: 0px 50px 0px 50px;
+    font-size: 20px;
+}
+
+.introducao {
+    float: left;
+    overflow: hidden;
+    background-color: #333;
+    height: 100%;
+    width: 100%;
+}
+
+.introducao p.sobre {
+    color: #4CAF50;
+    padding: 50px 0px 0px 50px;
+    font-size: 20px;
+}
+
+.introducao p.descricao{
+    padding: 0px 50px 0px 50px;
+    display: flex;
+    text-align: left;
+    font-size: 50px;
+    margin: 0px;
+
+    color: white;
+}
+
+.nossosProdutos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: center;
+    background-color: #333;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+	flex-wrap: wrap;
+    justify-content: left;
+	align-items: center;
+	margin-top: 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.produto {
+    width: 500px;
+    height: 150px;
+	margin-bottom: 30px;
+    box-sizing: border-box;
+    margin-left: 40px;
+    margin-right: 4px;
+    margin-top: 0px;
+    margin-bottom: 34px;
+    background-color: #4CAF50;
+}
+
+.produto h3 {
+    font-size: 7;
+	text-align: left;
+    padding: 0px 0px 0px 20px;
+}
+
+.produto p {
+    margin-top: 0px;
+    font-size: 5;
+    color: white;
+	text-align: left;
+    padding: 0px 0px 0px 20px;
+}
