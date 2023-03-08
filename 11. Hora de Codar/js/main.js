@@ -15,6 +15,24 @@ const Perguntas = {
     }
 }
 
+function CONFIGURAR_ELEMENTO(Interacao) {
+    const InteracaoElement = document.createElement(Interacao.element);
+    if (Interacao.element == "input") {
+        InteracaoElement.setAttribute("type", Interacao.type);
+        InteracaoElement.setAttribute("class", Interacao.class);
+        InteracaoElement.setAttribute("placeholder", Interacao.placeholder);
+        InteracaoElement.setAttribute("name", Interacao.name);
+        InteracaoElement.setAttribute("id", Interacao.id);
+
+        if (Interacao.required) {
+            InteracaoElement.setAttribute("required", Interacao.required);
+        }
+    } else if (InteracaoElement == "text") {
+
+    }
+
+    return InteracaoElement
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     for (const key in Perguntas) {
@@ -45,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         QuestionContainer.appendChild(QuestionBody);
 
         // Todas as interações
+        /*
         for (const Index in Perguntas[key].Interacao) {
             const Interacao = Perguntas[key].Interacao[Index];
             const InteracaoElement = document.createElement(Interacao.element);
@@ -58,6 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 InteracaoElement.setAttribute("required", Interacao.required);
             }
 
+            QuestionBody.appendChild(InteracaoElement);
+        }
+        */
+        for (const Index in Perguntas[key].Interacao) {
+            const InteracaoElement = CONFIGURAR_ELEMENTO(Perguntas[key].Interacao[Index]);
             QuestionBody.appendChild(InteracaoElement);
         }
 

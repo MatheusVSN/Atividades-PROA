@@ -64,11 +64,16 @@ header h1 {
 
 .question-body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
-.form__field {
+.question-body > * {
+    margin-bottom: 20px;
+
+}
+
+.form__field, .form__answer {
     font-family: inherit;
     width: 75%;
     border: 0;
