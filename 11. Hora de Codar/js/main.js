@@ -55,9 +55,10 @@ const Perguntas = {
         Resposta: "O nome do carro é: ",
         Interacao: {
             1: generateInputBox("Digite o nome do carro", "NomeDoCarro", true),
-            2: generateInputResult()
+            2: generateInputResult("NomeDoCarroResult")
         },
-        Tipo: 1
+        Tipo: 1,
+        Questao: 1
     },
     2: {
         Pergunta: `Escreva um programa em Javascript em que o usuário informe o seu nome e exiba a mensagem "Olá, [NomeDoUsuario]".`,
@@ -65,9 +66,10 @@ const Perguntas = {
         Resposta: "Olá, ",
         Interacao: {
             1: generateInputBox("Digite o seu nome", "NomeDoUsuario", true),
-            2: generateInputResult()
+            2: generateInputResult("NomeDoUsuarioResult")
         },
-        Tipo: 1
+        Tipo: 1,
+        Questao: 2
     },
     3: {
         Pergunta: `Escreva um programa em Javascript em que o usuário informe o seu nome e em seguida o programa perguntará a idade do usuário. Agora o programa deve exibir a mensagem "Olá, [NomeDoUsuario], sua idade é [idade]".`,
@@ -75,12 +77,26 @@ const Perguntas = {
         Interacao: {
             1: generateInputBox("Digite o seu nome", "NomeDoUsuario2", true)
         },
-        Tipo: 2
+        Tipo: 2,
+        Questao: 3
     },
     4: {
         Pergunta: `Áreas de Figuras Planas`,
         ImagemID: `https://lh6.googleusercontent.com/12VeEnZzYRUQqnRbEjxjJ3m2H6BxAU-oLQ0vuG08k-hpqXq5A36AZBSilhnFhT1Phe4S6ClFM6AHTHMTXkEf9BksDv2jI3bqHSH4nOR_tqbRntx4pmbdt3EzOLGrttrFtw=w321`,
-        Tipo: "IMAGEM"
+        Tipo: "IMAGEM",
+        Questao: 4
+    },
+    5: {
+        Pergunta: `Área do retângulo`,
+        Id: "AreaDoRetangulo",
+        Reposta: "A área do retângulo é: ",
+        Interacao: {
+            1: generateInputBox("Base do retângulo", "BaseDoTriangulo", true),
+            2: generateInputBox("Altura do retângulo", "AlturaDoTriangulo", true),
+            3: generateInputResult("AreaDoRetanguloResult")
+        },
+        Tipo: 3,
+        Questao: 4
     }
 }
 
@@ -99,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // <h2>
         const H2 = document.createElement("h2");
-        const H2Content = document.createTextNode(`[${key}] ${Perguntas[key].Pergunta}`);
+        const H2Content = document.createTextNode(`[${Perguntas[key].Questao}] ${Perguntas[key].Pergunta}`);
         H2.appendChild(H2Content);
         QuestionHeader.appendChild(H2);
 
@@ -112,9 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (Perguntas[key].Tipo == "IMAGEM") {
             const PictureElement = document.createElement("picture");
             const ImgElement = document.createElement("img");
-            ImgElement.src = Perguntas[key].ImagemID
-            PictureElement.appendChild(ImgElement)
-            QuestionHeader.appendChild(PictureElement)
+            ImgElement.src = Perguntas[key].ImagemID;
+            PictureElement.appendChild(ImgElement);
+            QuestionHeader.appendChild(PictureElement);
 
             // Decoração
             // <div class="line">
@@ -134,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
             QuestionBody.appendChild(InteracaoElement);
         }
 
-        // Botão de enviar
+        // Botão de enviar, só vai aceitar se o tipo de pergunta não for uma imagem
         if (Perguntas[key].Tipo != "IMAGEM") {
             const SubmitButton = document.createElement("button");
             const SubmitText = document.createTextNode("Enviar");
@@ -147,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let Tipo = Perguntas[key].Tipo;
                 if (Tipo == 1) {
                     let Variavel = document.getElementById(Perguntas[key].Id).value;
-                    let ResultElement = document.getElementsByClassName("form__result")[key - 1];
+                    let ResultElement = document.getElementById(`${Perguntas[key].Id}Result`);
                     ResultElement.innerText = `${Perguntas[key].Resposta} ${Variavel}`
                 } else if (Tipo == 2) {
                     // Checa se tem algum elemento perguntando a idade dele
@@ -165,26 +181,40 @@ document.addEventListener("DOMContentLoaded", function () {
                             let ResultElement = CONFIGURAR_ELEMENTO(generateInputResult(`${Perguntas[key].Id} RESPOSTA TEMPORARIO`));
                             ResultElement.innerText = `Olá ${Nome}, sua idade é ${Idade}`;
 
-                            QuestionBody.appendChild(ResultElement)
+                            QuestionBody.appendChild(ResultElement);
 
                             // Coloca o texto de reiniciar a pergunta
-                            let NewText = document.createTextNode("Reiniciar")
-                            removeAllChildNodes(SubmitButton)
-                            SubmitButton.appendChild(NewText)
+                            let NewText = document.createTextNode("Reiniciar");
+                            removeAllChildNodes(SubmitButton);
+                            SubmitButton.appendChild(NewText);
                         } else {
                             // Remove o texto de reinciar a perguntar e reinicia o questionario
-                            RespostaExistent.remove()
-                            let NewText = document.createTextNode("Enviar")
-                            removeAllChildNodes(SubmitButton)
-                            SubmitButton.appendChild(NewText)
+                            RespostaExistent.remove();
+                            let NewText = document.createTextNode("Enviar");
+                            removeAllChildNodes(SubmitButton);
+                            SubmitButton.appendChild(NewText);
 
-                            // Remove a pergunta da idade
-                            let ExistentAge = document.getElementById(`${Perguntas[key].Id} TEMPORARIO`)
+                            // Remove a pergunta da idade, se existente
+                            let ExistentAge = document.getElementById(`${Perguntas[key].Id} TEMPORARIO`);
                             if (ExistentAge) {
-                                return ExistentAge.remove()
+                                return ExistentAge.remove();
                             }
                         }
                     }
+                } else if (Tipo == 3) {
+                    let BaseDoRetangulo = Number(document.getElementById("BaseDoTriangulo").value);
+                    let AlturaDoRetangulo = Number(document.getElementById("AlturaDoTriangulo").value);
+
+                    let ResultElement = document.getElementById(`${Perguntas[key].Id}Result`);
+
+                    if (isNaN(BaseDoRetangulo)) {
+                        return alert(`Insira um número que represente a base`);
+                    } else if (isNaN(AlturaDoRetangulo)) {
+                        return alert(`Insira um número que represente a altura`);
+                    }
+
+                    let Calculo = BaseDoRetangulo * AlturaDoRetangulo;
+                    ResultElement.innerText = `Área: ${Calculo}`;
                 }
             })
         }
