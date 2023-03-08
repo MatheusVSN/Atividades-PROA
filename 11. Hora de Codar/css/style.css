@@ -25,7 +25,7 @@ header {
     overflow: hidden;
     width: 100%;
     height: 150px;
-    background-color: var(--roxo);
+    background: linear-gradient(109.6deg, rgba(119, 44, 232, 0.68) 11.5%, rgb(119, 44, 232) 91.2%);
 
     display: flex;
     justify-content: center;
@@ -40,7 +40,7 @@ header h1 {
 .question-container {
     overflow: hidden;
     background-color: white;
-    width: clamp(200px, 70%, 1600px);
+    width: clamp(350px, 75%, 1000px);
 
     position: relative;
     bottom: 30px;
@@ -64,7 +64,24 @@ header h1 {
 
 .question-container .question-body {
     padding-top: 20px;
-    padding-bottom: 20px;
+}
+
+.question-header picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question-header picture img {
+    width: clamp(250px, 75%, 500px);
+    max-height: 500px;
+    object-fit: contain;
+    
+    border-bottom: 2px solid var(--roxo);
+    border-top: 2px solid var(--roxo);
+
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .question-body {
@@ -86,7 +103,20 @@ header h1 {
     font-size: 1.3rem;
     color: black;
     padding: 7px 0;
+    background-color: #f5f4f4;
+    transition: border-color 0.2s;
+}
+
+.form__result {
+    font-family: inherit;
+    width: 75%;
+    border-bottom: 2px solid var(--roxo);
+    outline: 0;
+    font-size: 1.3rem;
+    color: gray;
+    padding: 7px 0;
     background: transparent;
+    background-color: #f5f4f4;
     transition: border-color 0.2s;
 }
 
