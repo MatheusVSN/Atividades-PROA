@@ -16,7 +16,6 @@ const Perguntas = {
 }
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
     for (const key in Perguntas) {
 
