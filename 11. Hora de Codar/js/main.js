@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Botão de enviar, só vai aceitar se o tipo de pergunta não for uma imagem
-        if (Perguntas[key].Tipo != "IMAGEM") {
+        if (Perguntas[key].Tipo != "IMAGEM" && Perguntas[key].Questao != 1) {
             const SubmitButton = document.createElement("button");
             const SubmitText = document.createTextNode("Enviar");
             SubmitButton.appendChild(SubmitText);
@@ -378,9 +378,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
         }
+
         // quando tudo estiver pronto
         const mainElement = document.getElementById("main");
         mainElement.appendChild(QuestionContainer);
+
+        if (Perguntas[key].Tipo == 1) {
+            // Remove o input do nome do carro, se existente 
+            let InputBox = document.getElementById('NomeDoCarro');
+            let Resultado = document.getElementById("NomeDoCarroResult");
+
+            let NomeDoCarro = "Fusca";
+
+            if (InputBox != null) {
+                InputBox.remove();
+            }
+            if (Resultado != null) {
+                Resultado.innerHTML= "O nome do carro é: " + NomeDoCarro;
+            }
+        }
     }
 });
 
