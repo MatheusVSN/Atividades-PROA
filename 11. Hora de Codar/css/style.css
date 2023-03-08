@@ -12,8 +12,13 @@ body {
 
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+main > * {
+    margin-bottom: 30px;
 }
 
 header {
@@ -35,7 +40,7 @@ header h1 {
 .question-container {
     overflow: hidden;
     background-color: white;
-    width: clamp(800px, 50%, 1600px);
+    width: clamp(200px, 70%, 1600px);
 
     position: relative;
     bottom: 30px;
@@ -70,10 +75,9 @@ header h1 {
 
 .question-body > * {
     margin-bottom: 20px;
-
 }
 
-.form__field, .form__answer {
+.form__field {
     font-family: inherit;
     width: 75%;
     border: 0;
@@ -85,6 +89,7 @@ header h1 {
     background: transparent;
     transition: border-color 0.2s;
 }
+
 
 button {
     background-color: var(--roxo);
