@@ -82,6 +82,7 @@ const Perguntas = {
     },
     4: {
         Pergunta: `Áreas de Figuras Planas`,
+        Descricao: "Considerando a figura acima, escreva um programa para cada forma que calcule e exiba em tela cada uma de suas respectivas áreas. O usuário irá informar os valores de cada variável.",
         ImagemID: `https://lh6.googleusercontent.com/12VeEnZzYRUQqnRbEjxjJ3m2H6BxAU-oLQ0vuG08k-hpqXq5A36AZBSilhnFhT1Phe4S6ClFM6AHTHMTXkEf9BksDv2jI3bqHSH4nOR_tqbRntx4pmbdt3EzOLGrttrFtw=w321`,
         Tipo: "IMAGEM",
         Questao: 4
@@ -89,16 +90,90 @@ const Perguntas = {
     5: {
         Pergunta: `Área do retângulo`,
         Id: "AreaDoRetangulo",
-        Reposta: "A área do retângulo é: ",
+        Resposta: "A área do retângulo é: ",
         Interacao: {
-            1: generateInputBox("Base do retângulo", "BaseDoTriangulo", true),
-            2: generateInputBox("Altura do retângulo", "AlturaDoTriangulo", true),
+            1: generateInputBox("Base do retângulo", "BaseDoRetangulo", true),
+            2: generateInputBox("Altura do retângulo", "AlturaDoRetangulo", true),
             3: generateInputResult("AreaDoRetanguloResult")
         },
         Tipo: 3,
-        Questao: 4
+        Questao: 4.1
+    },
+    6: {
+        Pergunta: `Área do quadrado`,
+        Id: "LadoDoQuadrado",
+        Resposta: "A área do quadrado é: ",
+        Interacao : {
+            1: generateInputBox("Lado do quadrado", "LadoDoQuadrado", true),
+            2: generateInputResult("LadoDoQuadradoResult")
+        },
+        Tipo: 4,
+        Questao: 4.2
+    },
+    7: {
+        Pergunta: `Área do lesângulo`,
+        Id: "AreaDoLosangulo",
+        Resposta: "A área do losângulo é: ",
+        Interacao : {
+            1: generateInputBox("Diagonal Maior", "DiagonalMaior", true),
+            2: generateInputBox("Diagonal Menor", "DiagonalMenor", true),
+            3: generateInputResult("AreaDoLosanguloResult")
+        },
+        Tipo: 5,
+        Questao: 4.3
+    },
+    8: {
+        Pergunta: `Área do trapézio`,
+        Id: "AreaDoTrapezio",
+        Resposta: "A área do trapézio é: ",
+        Interacao : {
+            1: generateInputBox("Base Maior", "BaseMaior", true),
+            2: generateInputBox("Base Menor", "BaseMenor", true),
+            3: generateInputBox("Altura", "Altura", true),
+            4: generateInputResult("AreaDoTrapezioResult")
+        },
+        Tipo: 6,
+        Questao: 4.4
+    }, 
+    9: {
+        Pergunta: `Área do paralelograma`,
+        Id: "AreaDoParalelograma",
+        Resposta: "A área do paralelograma é: ",
+        Interacao: {
+            1: generateInputBox("Base do paralelograma", "BaseDoParalelograma", true),
+            2: generateInputBox("Altura do paralelograma", "AlturaDoParalelograma", true),
+            3: generateInputResult("AreaDoParalelogramaResult")
+        },
+        Tipo: 7,
+        Questao: 4.5
+    },
+    10: {
+        Pergunta: `Área do triângulo`, 
+        Id: "AreaDoTriangulo",
+        Resposta: "A área do triângulo é: ",
+        Interacao: {
+            1: generateInputBox("Base do triângulo", "BaseDoTriangulo", true),
+            2: generateInputBox("Altura do triângulo", "AlturaDoTriangulo", true),
+            3: generateInputResult("AreaDoTrianguloResult")
+        },
+        Tipo: 8,
+        Questao: 4.6
+    },
+    11: {
+        //tipo 9
+        Pergunta: `Área do círculo`,
+        Id: "AreaDoCirculo",
+        Resposta: "A área do círculo é: ",
+        Interacao: {
+            1: generateInputBox("Raio do círculo", "RaioDoCirculo", true),
+            2: generateInputResult("AreaDoCirculoResult")
+        },
+        Tipo: 9,
+        Questao: 4.7
     }
 }
+
+// pi = 3.14159265358979323846
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -137,6 +212,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const Line = document.createElement("div");
             Line.setAttribute("class", "line");
             QuestionHeader.appendChild(Line);
+
+            // <p>
+            const H2_2 = document.createElement("h2");
+            const H2Content_2 = document.createTextNode(Perguntas[key].Descricao);
+            H2_2.appendChild(H2Content_2);
+            QuestionHeader.appendChild(H2_2);
         }
 
         // <div class="question-body">
@@ -202,8 +283,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
                 } else if (Tipo == 3) {
-                    let BaseDoRetangulo = Number(document.getElementById("BaseDoTriangulo").value);
-                    let AlturaDoRetangulo = Number(document.getElementById("AlturaDoTriangulo").value);
+                    let BaseDoRetangulo = Number(document.getElementById("BaseDoRetangulo").value);
+                    let AlturaDoRetangulo = Number(document.getElementById("AlturaDoRetangulo").value);
 
                     let ResultElement = document.getElementById(`${Perguntas[key].Id}Result`);
 
@@ -214,7 +295,86 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
                     let Calculo = BaseDoRetangulo * AlturaDoRetangulo;
-                    ResultElement.innerText = `Área: ${Calculo}`;
+                    ResultElement.innerText = `${Perguntas[key].Resposta} ${Calculo}`;
+                } else if (Tipo == 4) {
+                    let LadoDoQuadrado = Number(document.getElementById("LadoDoQuadrado").value);
+                    let ResultElement = document.getElementById(`${Perguntas[key].Id}Result`);
+
+                    if (isNaN(LadoDoQuadrado)) {
+                        return alert(`Insira um número que represente o lado`);
+                    }
+
+                    let Calculo = LadoDoQuadrado * LadoDoQuadrado;
+                    ResultElement.innerText = `${Perguntas[key].Resposta} ${Calculo}`;
+                } else if (Tipo == 5) {
+                    let DiagonalMaior = Number(document.getElementById("DiagonalMaior").value);
+                    let DiagonalMenor = Number(document.getElementById("DiagonalMenor").value);
+
+                    let ResultElement = document.getElementById(`${Perguntas[key].Id}Result`);
+
+                    if (isNaN(DiagonalMaior)) {
+                        return alert(`Insira um número que represente a diagonal maior`);
+                    } else if (isNaN(DiagonalMenor)) {
+                        return alert(`Insira um número que represente a diagonal menor`);
+                    }
+
+                    let Calculo = (DiagonalMaior * DiagonalMenor) / 2;
+                    ResultElement.innerText = `${Perguntas[key].Resposta} ${Calculo}`;
+                } else if (Tipo == 6) {
+                    let BaseMaior = Number(document.getElementById("BaseMaior").value);
+                    let BaseMenor = Number(document.getElementById("BaseMenor").value);
+                    let Altura = Number(document.getElementById("Altura").value);
+
+                    let ResultElement = document.getElementById(`${Perguntas[key].Id}Result`);
+
+                    if (isNaN(BaseMaior)) {
+                        return alert(`Insira um número que represente a base maior`);
+                    } else if (isNaN(BaseMenor)) {
+                        return alert(`Insira um número que represente a base menor`);
+                    } else if (isNaN(Altura)) {
+                        return alert(`Insira um número que represente a altura`);
+                    }
+
+                    let Calculo = ((BaseMaior + BaseMenor) * Altura) / 2;
+                    ResultElement.innerText = `${Perguntas[key].Resposta} ${Calculo}`;
+                } else if (Tipo == 7) {
+                    let BaseDoPalalelograma = Number(document.getElementById("BaseDoParalelograma").value);
+                    let AlturaDoPalalelograma = Number(document.getElementById("AlturaDoParalelograma").value);
+
+                    let ResultElement = document.getElementById(`${Perguntas[key].Id}Result`);
+
+                    if (isNaN(BaseDoPalalelograma)) {
+                        return alert(`Insira um número que represente a base`);
+                    } else if (isNaN(AlturaDoPalalelograma)) {
+                        return alert(`Insira um número que represente a altura`);
+                    }
+
+                    let Calculo = BaseDoPalalelograma * AlturaDoPalalelograma;
+                    ResultElement.innerText = `${Perguntas[key].Resposta} ${Calculo}`;
+                } else if (Tipo == 8) {
+                    let BaseDoTriangulo = Number(document.getElementById("BaseDoTriangulo").value);
+                    let AlturaDoTriangulo = Number(document.getElementById("AlturaDoTriangulo").value);
+
+                    let ResultElement = document.getElementById(`${Perguntas[key].Id}Result`);
+
+                    if (isNaN(BaseDoTriangulo)) {
+                        return alert(`Insira um número que represente a base`);
+                    } else if (isNaN(AlturaDoTriangulo)) {
+                        return alert(`Insira um número que represente a altura`);
+                    }
+
+                    let Calculo = (BaseDoTriangulo * AlturaDoTriangulo) / 2;
+                    ResultElement.innerText = `${Perguntas[key].Resposta} ${Calculo}`;
+                } else if (Tipo == 9) {
+                    let RaioDoCirculo = Number(document.getElementById("RaioDoCirculo").value);
+                    let ResultElement = document.getElementById(`${Perguntas[key].Id}Result`);
+
+                    if (isNaN(RaioDoCirculo)) {
+                        return alert(`Insira um número que represente o raio`);
+                    }
+
+                    let Calculo = Math.PI * (RaioDoCirculo * RaioDoCirculo);
+                    ResultElement.innerText = `${Perguntas[key].Resposta} ${Calculo}`;
                 }
             })
         }
