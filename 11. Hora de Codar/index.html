@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Hora de Codar</title>
+    <meta http-equiv="description" content="Logica de Programação">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="./javascript/exercises.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>HORA DE CODAR</h1>
+    </header>
+
+    <main id="main">
+        <!--
+            <div class="question-container">
+                <div class="question-header">
+                    <h2>[100] Escreva um programa em Javascript e crie uma variável chamada "nomeDoCarro" e atribua-a um valor "Fusca". Exiba-a ao usuário.</h2>
+                    <div class="line"></div>
+                    <picture>
+                        <img src="https://lh6.googleusercontent.com/12VeEnZzYRUQqnRbEjxjJ3m2H6BxAU-oLQ0vuG08k-hpqXq5A36AZBSilhnFhT1Phe4S6ClFM6AHTHMTXkEf9BksDv2jI3bqHSH4nOR_tqbRntx4pmbdt3EzOLGrttrFtw=w321">
+                    </picture>
+                </div>
+                <div class="question-body">
+                    <input type="input" class="form__field" placeholder="Digite o nome do carro" name="nomeDoCarro" id="nomeDoCarro" required />
+                    <p class="form__result">Resultado</p>
+                </div>
+                <button id="progress">Enviar</button>
+            </div>
+            -->
+
+        <!--
+            <div class="question-container">
+                <div class="question-header">
+                    <h2>[INDEX] PERGUNTA COM IMAGEM</h2>
+                    <div class="line"></div>
+                    <picture>
+                        <img src="https://lh6.googleusercontent.com/12VeEnZzYRUQqnRbEjxjJ3m2H6BxAU-oLQ0vuG08k-hpqXq5A36AZBSilhnFhT1Phe4S6ClFM6AHTHMTXkEf9BksDv2jI3bqHSH4nOR_tqbRntx4pmbdt3EzOLGrttrFtw=w321">
+                    </picture>
+                </div>
+            </div>
+        -->
+
+        <!-- Questão 1 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>[1] Escreva um programa em Javascript e crie uma variável chamada "nomeDoCarro" e atribua-a um valor
+                    "Fusca". Exiba-a ao usuário.</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_1()">Executar</button>
+        </div>
+
+        <!-- Questão 2 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>[2] Escreva um programa em Javascript em que o usuário informe o seu nome e exiba a mensagem "Olá,
+                    [NomeDoUsuario]".</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_2()">Executar</button>
+        </div>
+
+        <!-- Questão 3 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>[3] Escreva um programa em Javascript em que o usuário informe o seu nome e em seguida o programa
+                    perguntará a idade do usuário. Agora o programa deve exibir a mensagem "Olá, [NomeDoUsuario], sua
+                    idade é [idade]".</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_3()">Executar</button>
+        </div>
+
+        <!-- Questão 4 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>[4] Áreas de Figuras Planas</h2>
+                <div class="line"></div>
+                <picture>
+                    <img
+                        src="https://lh6.googleusercontent.com/12VeEnZzYRUQqnRbEjxjJ3m2H6BxAU-oLQ0vuG08k-hpqXq5A36AZBSilhnFhT1Phe4S6ClFM6AHTHMTXkEf9BksDv2jI3bqHSH4nOR_tqbRntx4pmbdt3EzOLGrttrFtw=w321">
+                </picture>
+                <div class="line"></div>
+                <h2>Considerando a figura acima, escreva um programa para cada forma que calcule e exiba em tela cada uma de suas respectivas áreas. O usuário irá informar os valores de cada variável.</h2>
+            </div>
+        </div>
+
+        <!-- Questão 4.1 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>Área do retângulo</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_4_1()">Executar</button>
+        </div>
+
+        <!-- Questão 4.2 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>Área do quadrado</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_4_2()">Executar</button>
+        </div>
+
+        <!-- Questão 4.3 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>Área do losângulo</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_4_3()">Executar</button>
+        </div>
+
+        <!-- Questão 4.4-->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>Área do trapézio</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_4_4()">Executar</button>
+        </div>
+
+        <!-- Questão 4.5 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>Área do paralelograma</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_4_5()">Executar</button>
+        </div>
+
+        <!-- Questão 4.6 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>Área do triângulo</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_4_6()">Executar</button>
+        </div>
+
+        <!-- Questão 4.7 -->
+        <div class="question-container">
+            <div class="question-header">
+                <h2>Área do círculo</h2>
+                <div class="line"></div>
+            </div>
+            <button id="progress" onClick="exercicio_4_7()">Executar</button>
+        </div>
+
+        <!-- Questão 5-->
+    </main>
+</body>
+
+</html>
