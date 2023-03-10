@@ -1,9 +1,14 @@
+const ListaDeRespostas = {
+    5: `A função "alert()" do java script é usada para o navegador exibir um alerta na tela do usuário, usando a mensagem dentro dos parênteses como texto. Ela pode ser usada de diferentes maneiras dependendo do contexto, um exemplo de uso seria como um aviso para o usuário sobre uma determinada ação.`,
+    6: `A função "prompt()" do java script é usada para o navegador exibir uma caixa de diálogo na tela do usuário, usando a mensagem dentro dos parênteses como texto. Ela pode ser usada de diferentes maneiras dependendo do contexto, um exemplo de uso seria para pedir ao usuário que insira um valor.`,
+    7: `A função "console.log()" serve para exibir uma mensagem no console do navegador. Um exemplo de seu uso seria para debugar códigos.`
+}
 function checkIntegrity(argument) {
     if (typeof(argument) == "string") {
         return ((argument.length == 0 || argument.trim()) && argument || null)
     } else if (typeof(argument) == "number") {
-        let Text = toString(argument)
-        return (((Text.length == 0 || Text.trim() && null)) && (((isNaN(argument) == true) && null) && null) || argument)
+        let Text = argument.toString()
+        return (checkIntegrity(Text) && !isNaN(argument) && argument || null)
     }
 
     return null
@@ -30,7 +35,7 @@ function exercicio_2() {
     var nome = askForText("Qual o seu nome?");
 
     while (nome == null) {
-        nome = askForText("Por favor, não deixe o texto em branco");
+        nome = askForText("Por favor, não deixe o seu nome em branco");
     }
 
     alert(`Olá, ${nome}`);
@@ -41,7 +46,7 @@ function exercicio_3() {
     var idade = askForNumber("Quantos anos você tem?");
 
     while (nome == null) {
-        nome = askForText("Por favor, não deixe o texto em branco");
+        nome = askForText("Por favor, não deixe o seu nome em branco");
     }
     while (idade == null) {
         idade = askForNumber("Por favor, insira um número válido que represente a sua idade");
@@ -51,14 +56,14 @@ function exercicio_3() {
 }
 
 function exercicio_4_1() {
-    var Altura = Number(prompt("Insira a altura do retângulo"));
-    var Base = Number(prompt("Insira a base do retângulo"));
+    var Altura = askForNumber("Insira a altura do retângulo");
+    var Base = askForNumber("Insira a base do retângulo");
 
-    while (isNaN(Altura)) {
-        Altura = Number(prompt("Por favor, insira um número válido que represente a altura do retângulo"));
+    while (Altura == null) {
+        Altura = askForNumber("Por favor, insira um número válido que represente a altura do retângulo");
     }
-    while (isNaN(Base)) {
-        Base = Number(prompt("Por favor, insira um número válido que represente a base do retângulo"));
+    while (Base == null) {
+        Base = askForNumber("Por favor, insira um número válido que represente a base do retângulo");
     }
 
     var Calculo = Base * Altura;
@@ -66,10 +71,10 @@ function exercicio_4_1() {
 }
 
 function exercicio_4_2(){
-    var Lado = Number(prompt("Insira o lado do quadrado"));
+    var Lado = askForNumber("Insira o lado do quadrado");
 
-    while (isNaN(Lado)) {
-        Lado = Number(prompt("Por favor, insira um número válido que represente o lado do quadrado"));
+    while (Lado == null) {
+        Lado = askForNumber("Por favor, insira um número válido que represente o lado do quadrado");
     }
 
     var Calculo = Lado * Lado;
@@ -77,14 +82,14 @@ function exercicio_4_2(){
 }
 
 function exercicio_4_3() {
-    var DiagonalMaior = Number(prompt("Insira a diagonl maior do losângulo"));
-    var DiagonalMenor = Number(prompt("Insira a diagonal menor do losângulo"));
+    var DiagonalMaior = askForNumber("Insira a diagonl maior do losângulo");
+    var DiagonalMenor = askForNumber("Insira a diagonal menor do losângulo");
 
-    while (isNaN(DiagonalMaior)) {
-        DiagonalMaior = Number(prompt("Por favor, insira um número válido que represente a diagonal maior do losângulo"));
+    while (DiagonalMaior == null) {
+        DiagonalMaior = askForNumber("Por favor, insira um número válido que represente a diagonal maior do losângulo");
     }
-    while (isNaN(DiagonalMenor)) {
-        DiagonalMenor = Number(prompt("Por favor, insira um número válido que represente a diagonal menor do losângulo"));
+    while (DiagonalMenor == null) {
+        DiagonalMenor = askForNumber("Por favor, insira um número válido que represente a diagonal menor do losângulo");
     }
 
     var Calculo = DiagonalMaior * DiagonalMenor / 2;
@@ -92,18 +97,18 @@ function exercicio_4_3() {
 }
 
 function exercicio_4_4() {
-    var BaseMaior = Number(prompt("Insira a base maior do trapézio"));
-    var BaseMenor = Number(prompt("Insira a base menor do trapézio"));
-    var Altura = Number(prompt("Insra a altura do trapézio"));
+    var BaseMaior = askForNumber("Insira a base maior do trapézio");
+    var BaseMenor = askForNumber("Insira a base menor do trapézio");
+    var Altura = askForNumber("Insra a altura do trapézio");
 
-    while (isNaN(BaseMaior)) {
-        BaseMaior = Number(prompt("Por favor, insira um número válido que represente a base maior do trapézio"));
+    while (BaseMaior == null) {
+        BaseMaior = askForNumber("Por favor, insira um número válido que represente a base maior do trapézio");
     }
-    while (isNaN(BaseMenor)) {
-        BaseMenor = Number(prompt("Por favor, insia um número válido que represente a base menor do trapézio"));
+    while (BaseMenor == null) {
+        BaseMenor = askForNumber("Por favor, insia um número válido que represente a base menor do trapézio");
     }
-    while (isNaN(Altura)) {
-        Altura = Number(prompt("Por favor, insira um número válido que represente a altura do trapézio"));
+    while (Altura == null) {
+        Altura = askForNumber("Por favor, insira um número válido que represente a altura do trapézio");
     }
 
     var Calculo = (BaseMaior + BaseMenor) * Altura / 2;
@@ -111,14 +116,14 @@ function exercicio_4_4() {
 }
 
 function exercicio_4_5() {
-    var Base = Number(prompt("Insira a base do paralelograma"));
-    var Altura = Number(prompt("Insira a altura do paralelograma"));
+    var Base = askForNumber("Insira a base do paralelograma");
+    var Altura = askForNumber("Insira a altura do paralelograma");
 
-    while (isNaN(Base)) {
-        Base = Number(prompt("Por favor, insira um número valido que represente a base do paralelograma"));
+    while (Base == null) {
+        Base = askForNumber("Por favor, insira um número valido que represente a base do paralelograma");
     }
-    while (isNaN(Altura)) {
-        Altura = Number(prompt("Por favor, insira um número valido que represente a altura do paralelograma"));
+    while (Altura == null) {
+        Altura = askForNumber("Por favor, insira um número valido que represente a altura do paralelograma");
     }
 
     var Calculo = Base * Altura;
@@ -126,14 +131,14 @@ function exercicio_4_5() {
 }
 
 function exercicio_4_6(){
-    var Base = Number(prompt("Insira a base do triângulo"));
-    var Altura = Number(prompt("Insira a altura do triângulo"));
+    var Base = askForNumber("Insira a base do triângulo");
+    var Altura = askForNumber("Insira a altura do triângulo");
 
-    while (isNaN(Base)) {
-        Base = Number(prompt("Por favor, insira um número que represente a base do triângulo"));
+    while (Base == null) {
+        Base = askForNumber("Por favor, insira um número que represente a base do triângulo");
     }
-    while (isNaN(Altura)) {
-        Altura = Number(prompt("Por favor, insira um número que represente a altura do triângulo"));
+    while (Altura == null) {
+        Altura = askForNumber("Por favor, insira um número que represente a altura do triângulo");
     }
 
     var Calculo = Base * Altura / 2;
@@ -141,12 +146,24 @@ function exercicio_4_6(){
 }
 
 function exercicio_4_7() {
-    var Raio = Number(prompt("Insira o raio do círculo"));
+    var Raio = askForNumber("Insira o raio do círculo");
     
-    while (isNaN(Raio)) {
-        Raio = Number(prompt("Por favor, insira um número que represente o raio do círculo"));
+    while (Raio == null) {
+        Raio = askForNumber("Por favor, insira um número que represente o raio do círculo");
     }
 
     var Calculo = Math.PI * Math.pow(Raio, 2);
     alert(`A área do circulo é igual a: ${Calculo}`);
+}
+
+function exercicioDeResposta(questao) {
+    var Resposta = Resposta = ListaDeRespostas[questao]
+    
+    if (questao != 6) {
+        alert(Resposta)
+    } else {
+        alert(Resposta)
+        let oqueVoceDigitou = prompt(`Isso seria um exemplo de uso da função "prompt()" do java script`)
+        alert(`O prompt(), pega oque você digita.\nNo caso você enviou: ${oqueVoceDigitou}`)
+    }
 }
