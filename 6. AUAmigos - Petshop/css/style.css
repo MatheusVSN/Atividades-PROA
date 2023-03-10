@@ -2,6 +2,10 @@
     font-family: "Roboto", sans-serif;
 }
 
+:root {
+    --roxo: #4CAF50;
+}
+
 nav {
     list-style-type: none;
     margin: 0;
@@ -19,6 +23,7 @@ footer {
     padding: 0;
     overflow: hidden;
     background-color: rgb(60, 60, 60);
+
     width: 100%;
 }
 
@@ -220,6 +225,23 @@ p.nossotrabalho {
     background-color: #4CAF50;
 }
 
+.produto_4 {
+    width: 500px;
+    height: 50px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    margin-left: 40px;
+    margin-right: 4px;
+    margin-top: 0px;
+    margin-bottom: 34px;
+    background-color: #4CAF50;
+}
+
+.produto_4 h3 {
+    text-align: center;
+    color: white;
+}
+
 .produto_3 {
     width: 500px;
     height: 200px;
@@ -256,6 +278,7 @@ p.nossotrabalho {
     overflow: hidden;
     margin-left: 8px;
     margin-right: 8px;
+    margin-bottom: 8px;
     background-color: #4CAF50;
 }
 
