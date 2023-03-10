@@ -1,3 +1,22 @@
+function checkIntegrity(argument) {
+    if (typeof(argument) == "string") {
+        return ((argument.length == 0 || argument.trim()) && argument || null)
+    } else if (typeof(argument) == "number") {
+        let Text = toString(argument)
+        return (((Text.length == 0 || Text.trim() && null)) && (((isNaN(argument) == true) && null) && null) || argument)
+    }
+
+    return null
+}
+
+function askForNumber(argument) {
+    return checkIntegrity(Number(prompt(argument)))
+}
+
+function askForText(argument) {
+    return checkIntegrity(prompt(argument))
+}
+
 function checkEmptyString(str) {
     return (str.length == 0 || !str.trim());
 }
@@ -8,22 +27,27 @@ function exercicio_1() {
 }
 
 function exercicio_2() {
-    var nome = prompt("Qual o seu nome?");
-    while(checkEmptyString(nome)) {
-        nome = prompt("Por favor, não deixe o texto em branco");
+    var nome = askForText("Qual o seu nome?");
+
+    while (nome == null) {
+        nome = askForText("Por favor, não deixe o texto em branco");
     }
+
     alert(`Olá, ${nome}`);
 }
 
 function exercicio_3() {
-    var nome = prompt("Qual o seu nome?");
-    var idade = parseInt(prompt("Qual a sua idade?"));
+    var nome = askForText("Qual o seu nome?");
+    var idade = askForNumber("Quantos anos você tem?");
 
-    while (isNaN(idade)) {
-        idade = parseInt(prompt("Por favor, digite um número válido"));
+    while (nome == null) {
+        nome = askForText("Por favor, não deixe o texto em branco");
+    }
+    while (idade == null) {
+        idade = askForNumber("Por favor, insira um número válido que represente a sua idade");
     }
 
-    alert(`Olá ${nome}, você tem ${idade} anos`);
+    alert(`Olá ${nome}, você tem ${parseInt(idade)} anos`);
 }
 
 function exercicio_4_1() {
