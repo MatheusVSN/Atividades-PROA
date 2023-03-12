@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+:root {
+    --main-container-color: #FFFFFF;
+    --second-container-color: #C0C0C0;
+    --third-container-color: #603AE8;
+    --fourth-container-color: #7E8188;
+
+    font-size: 62.5%
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1.6rem;
+
+    min-height: 100vh;
+    background: rgb(253, 26, 98);
+    background: linear-gradient(180deg, rgba(253, 26, 98, 1) 0%, rgba(251, 87, 52, 1) 100%);
+
+    display: grid;
+    place-items: center;
+}
+
+
+.container {
+    overflow: hidden;
+    background-color: var(--main-container-color);
+    width: clamp(350px, 75%, 1000px);
+}
+
+.container .container-header h1 {
+    margin-left: 50px;
+    font-size: 4rem;
+}
+
+.container .container-header p {
+    margin-left: 50px;
+    font-size: 2.5rem;
+
+    position: relative;
+    top: -20px;
+}
+
+.container .container-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.container .container-options > * {
+    background-color: var(--second-container-color);
+    border-bottom: 3px solid var(--second-container-color);
+    margin-bottom: -3px;
+
+    width: 30%;
+    height: 50px;
+
+    color: var(--fourth-container-color);
+    text-align: center;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.container .container-options > *.active {
+    color: var(--third-container-color);
+    border-bottom: 3px solid var(--third-container-color);
+    margin-bottom: -3px;
+}
