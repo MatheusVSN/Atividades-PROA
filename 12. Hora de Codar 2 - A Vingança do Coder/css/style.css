@@ -74,17 +74,6 @@ body {
     text-decoration: none;
 }
 
-.container .container-options input[type="radio"] {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-}
-
-.container .container-options [id^="tab"]:checked+label {
-    background: var(--third-container-color);
-    color: #fff;
-}
-
 
 .container .container-options>*.active {
     color: var(--third-container-color);
