@@ -6,16 +6,12 @@ const ListaDeRespostas = {
 function checkIntegrity(argument) {
     if (typeof(argument) == "string") {
         return ((argument.length == 0 || argument.trim()) && argument || null)
-    } else if (typeof(argument) == "number") {
-        let Text = argument.toString()
-        return (checkIntegrity(Text) && !isNaN(argument) && argument || null)
-    }
-
+    } 
     return null
 }
 
 function askForNumber(argument) {
-    return checkIntegrity(Number(prompt(argument)))
+    return Number(prompt(argument));
 }
 
 function askForText(argument) {
@@ -48,7 +44,7 @@ function exercicio_3() {
     while (nome == null) {
         nome = askForText("Por favor, não deixe o seu nome em branco");
     }
-    while (idade == null) {
+    while (isNaN(idade)) {
         idade = askForNumber("Por favor, insira um número válido que represente a sua idade");
     }
 
@@ -59,10 +55,10 @@ function exercicio_4_1() {
     var Altura = askForNumber("Insira a altura do retângulo");
     var Base = askForNumber("Insira a base do retângulo");
 
-    while (Altura == null) {
+    while (isNaN(Altura)) {
         Altura = askForNumber("Por favor, insira um número válido que represente a altura do retângulo");
     }
-    while (Base == null) {
+    while (isNaN(Base)) {
         Base = askForNumber("Por favor, insira um número válido que represente a base do retângulo");
     }
 
@@ -73,7 +69,7 @@ function exercicio_4_1() {
 function exercicio_4_2(){
     var Lado = askForNumber("Insira o lado do quadrado");
 
-    while (Lado == null) {
+    while (isNaN(Lado)) {
         Lado = askForNumber("Por favor, insira um número válido que represente o lado do quadrado");
     }
 
@@ -85,10 +81,10 @@ function exercicio_4_3() {
     var DiagonalMaior = askForNumber("Insira a diagonl maior do losângulo");
     var DiagonalMenor = askForNumber("Insira a diagonal menor do losângulo");
 
-    while (DiagonalMaior == null) {
+    while (isNaN(DiagonalMaior)) {
         DiagonalMaior = askForNumber("Por favor, insira um número válido que represente a diagonal maior do losângulo");
     }
-    while (DiagonalMenor == null) {
+    while (isNaN(DiagonalMenor)) {
         DiagonalMenor = askForNumber("Por favor, insira um número válido que represente a diagonal menor do losângulo");
     }
 
@@ -101,13 +97,13 @@ function exercicio_4_4() {
     var BaseMenor = askForNumber("Insira a base menor do trapézio");
     var Altura = askForNumber("Insra a altura do trapézio");
 
-    while (BaseMaior == null) {
+    while (isNaN(BaseMaior)) {
         BaseMaior = askForNumber("Por favor, insira um número válido que represente a base maior do trapézio");
     }
-    while (BaseMenor == null) {
+    while (isNaN(BaseMenor)) {
         BaseMenor = askForNumber("Por favor, insia um número válido que represente a base menor do trapézio");
     }
-    while (Altura == null) {
+    while (isNaN(Altura)) {
         Altura = askForNumber("Por favor, insira um número válido que represente a altura do trapézio");
     }
 
@@ -119,10 +115,10 @@ function exercicio_4_5() {
     var Base = askForNumber("Insira a base do paralelograma");
     var Altura = askForNumber("Insira a altura do paralelograma");
 
-    while (Base == null) {
+    while (isNaN(Base)) {
         Base = askForNumber("Por favor, insira um número valido que represente a base do paralelograma");
     }
-    while (Altura == null) {
+    while (isNaN(Altura)) {
         Altura = askForNumber("Por favor, insira um número valido que represente a altura do paralelograma");
     }
 
@@ -134,10 +130,10 @@ function exercicio_4_6(){
     var Base = askForNumber("Insira a base do triângulo");
     var Altura = askForNumber("Insira a altura do triângulo");
 
-    while (Base == null) {
+    while (isNaN(Base)) {
         Base = askForNumber("Por favor, insira um número que represente a base do triângulo");
     }
-    while (Altura == null) {
+    while (isNaN(Altura)) {
         Altura = askForNumber("Por favor, insira um número que represente a altura do triângulo");
     }
 
@@ -148,7 +144,7 @@ function exercicio_4_6(){
 function exercicio_4_7() {
     var Raio = askForNumber("Insira o raio do círculo");
     
-    while (Raio == null) {
+    while (isNaN(Raio)) {
         Raio = askForNumber("Por favor, insira um número que represente o raio do círculo");
     }
 

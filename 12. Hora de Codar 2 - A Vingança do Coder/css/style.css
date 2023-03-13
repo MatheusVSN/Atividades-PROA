@@ -30,20 +30,20 @@ body {
 .container {
     overflow: hidden;
     background-color: var(--main-container-color);
-    width: clamp(350px, 75%, 1000px);
+    width: clamp(35rem, 75%, 100rem);
 }
 
 .container .container-header h1 {
-    margin-left: 50px;
+    margin-left: 5rem;
     font-size: 4rem;
 }
 
 .container .container-header p {
-    margin-left: 50px;
+    margin-left: 5rem;
     font-size: 2.5rem;
 
     position: relative;
-    top: -20px;
+    top: -2rem;
 }
 
 .container .container-options {
@@ -51,16 +51,16 @@ body {
     justify-content: center;
     align-items: center;
 
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .container .container-options > * {
     background-color: var(--second-container-color);
-    border-bottom: 3px solid var(--second-container-color);
-    margin-bottom: -3px;
+    border-bottom: 0.3rem solid var(--second-container-color);
+    margin-bottom: -0.3rem;
 
     width: 30%;
-    height: 50px;
+    height: 5rem;
 
     color: var(--fourth-container-color);
     text-align: center;
@@ -74,6 +74,41 @@ body {
 
 .container .container-options > *.active {
     color: var(--third-container-color);
-    border-bottom: 3px solid var(--third-container-color);
-    margin-bottom: -3px;
+    border-bottom: 0.3rem solid var(--third-container-color);
+    margin-bottom: -0.3rem;
+}
+
+.container .container-question .question {
+    display: grid;
+    place-items: center;
+}
+
+.container .container-question .question h2 {
+    align-items: center;
+    text-align: left;
+    font-size: 2rem;
+
+    max-width: 90%;
+
+    margin-top: 3rem;
+    font-weight: bold;
+}
+
+.container .container-question .question button {
+    background-color: var(--third-container-color);
+    color: var(--main-container-color);
+    border: none;
+
+    height: 5rem;
+    width: 90%;
+
+    margin-top: 2rem;
+
+    align-items: center;
+    text-align: center;
+
+    font-weight: bold;
+    outline: 0;
+
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.1rem rgba(0,0,0,0.5);
 }
