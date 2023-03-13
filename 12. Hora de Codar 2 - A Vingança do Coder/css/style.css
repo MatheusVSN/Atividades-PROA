@@ -54,7 +54,7 @@ body {
     margin-bottom: 1rem;
 }
 
-.container .container-options > * {
+.container .container-options>* {
     background-color: var(--second-container-color);
     border-bottom: 0.3rem solid var(--second-container-color);
     margin-bottom: -0.3rem;
@@ -70,9 +70,23 @@ body {
 
     font-size: 1.5rem;
     font-weight: bold;
+
+    text-decoration: none;
 }
 
-.container .container-options > *.active {
+.container .container-options input[type="radio"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.container .container-options [id^="tab"]:checked+label {
+    background: var(--third-container-color);
+    color: #fff;
+}
+
+
+.container .container-options>*.active {
     color: var(--third-container-color);
     border-bottom: 0.3rem solid var(--third-container-color);
     margin-bottom: -0.3rem;
@@ -110,5 +124,5 @@ body {
     font-weight: bold;
     outline: 0;
 
-    box-shadow: 0.2rem 0.2rem 0.5rem 0.1rem rgba(0,0,0,0.5);
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
 }
