@@ -89,7 +89,9 @@ nav li a.active {
     background-size: 100% 100%;
     height: 60vh;
     overflow: hidden;
+    background-color: #333;
 }
+
 
 .header h1 {
     color: #4CAF50;
@@ -239,7 +241,7 @@ p.nossotrabalho {
 
 .produto_4 h3 {
     text-align: center;
-    color: white;
+    color: black;
 }
 
 .produto_3 {
