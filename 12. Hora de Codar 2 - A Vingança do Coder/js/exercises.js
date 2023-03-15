@@ -141,7 +141,7 @@ function exercicio_7() {
         NumbersArray.push(PresumedNumber);
         if (PresumedNumber < 72) {
             Total += PresumedNumber;
-            NumbersLowerThan72.push(PresumedNumber);    
+            NumbersLowerThan72.push(PresumedNumber);
         }
         FinalString += PresumedNumber + " ";
     }
@@ -244,19 +244,19 @@ document.addEventListener("DOMContentLoaded", function () {
         Question1_6.setAttribute("class", Argument == 1 ? "active" : "notActive");
         Question6_10.setAttribute("class", Argument == 2 ? "active" : "notActive");
         MicroCalculator.setAttribute("class", Argument == 3 ? "active" : "notActive");
-    
+
         QUESTIONS["1-5"].style.display = Argument == 1 ? "block" : "none";
         QUESTIONS["6-10"].style.display = Argument == 2 ? "block" : "none";
         QUESTIONS["microCalculadora"].style.display = Argument == 3 ? "block" : "none";
     }
 
-    Question1_6.addEventListener("click", function() {
+    Question1_6.addEventListener("click", function () {
         ToggleElements(1);
     })
-    Question6_10.addEventListener("click", function() {
+    Question6_10.addEventListener("click", function () {
         ToggleElements(2);
     })
-    MicroCalculator.addEventListener("click", function() {
+    MicroCalculator.addEventListener("click", function () {
         ToggleElements(3);
     })
 });
