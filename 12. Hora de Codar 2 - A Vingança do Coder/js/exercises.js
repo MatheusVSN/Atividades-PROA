@@ -1,4 +1,6 @@
-const NUMBER_INVALID_QUESTION = "Por favor, digite um número valido"
+const NUMBER_INVALID_QUESTION = "Por favor, digite um número valido";
+const STRING_INVALID_QUESTION = "Por favor, preencha a caixa de texto";
+const CURRENT_YEAR = new Date().getFullYear();
 
 
 function getTheHighestNumber(Array, Ammount) {
@@ -33,7 +35,16 @@ function askForNumber(argument) {
         PresumedNumber = Number(prompt(NUMBER_INVALID_QUESTION));
     }
 
-    return PresumedNumber
+    return PresumedNumber;
+}
+
+function askForString(argument) {
+    let PresumedString = prompt(argument);
+    while (!PresumedString) {
+        PresumedString = prompt(STRING_INVALID_QUESTION);
+    }
+
+    return PresumedString;
 }
 
 
@@ -101,6 +112,102 @@ function exercicio_5() {
     }
 
     Total /= Denominator;
-    
+
     alert(`A média aritimética dos 6 números que você digitou é igual a: ${Total}`);
 }
+
+function exercicio_6() {
+    let NumbersArray = [];
+    let Quantity = 6;
+    for (let index = 1; index <= Quantity; index += 1) {
+        let PresumedNumber = askForNumber(`[${index}] Informe um número`);
+        NumbersArray.push(PresumedNumber);
+    }
+
+    let FirstNumber = NumbersArray[0];
+    let LastNumber = NumbersArray[NumbersArray.length - 1];
+    let HighestNumber = getTheHighestNumber(NumbersArray, 1);
+
+    alert(`Resultado:\nPrimeiro número: ${FirstNumber}\nUltimo número: ${LastNumber}\nMaior número: ${HighestNumber}`);
+}
+
+function exercicio_7() {
+    let FinalString = "Números que você digitou: ";
+    let NumbersArray = [];
+    let Total = 0;
+    let Quantity = 6;
+    for (let index = 1; index <= Quantity; index += 1) {
+        let PresumedNumber = askForNumber(`[${index}] Informe um número`);
+        NumbersArray.push(PresumedNumber);
+        if (PresumedNumber < 72) {
+            Total += PresumedNumber;
+        }
+        FinalString += PresumedNumber + ", ";
+    }
+
+    FinalString += "\nResultado da soma: " + Total;
+    FinalString += "\n(A soma só se aplica aos números que forem menor que 72)";
+    alert(FinalString);
+}
+
+function exercicio_8() {
+    let NumbersArray = [];
+    let Media = 0;
+    let Total = 0;
+    let Quantity = 4;
+    for (let index = 1; index <= Quantity; index += 1) {
+        let PresumedNumber = askForNumber(`[${index}] Informe um número`);
+        while (PresumedNumber > 10 || PresumedNumber < 0) {
+            PresumedNumber = askForNumber(`[${index}] Por favor, insira um número entre 0 e 10`);
+        }
+        Total += PresumedNumber;
+    }
+
+    Total /= Quantity;
+    let FinalString =
+        Total >= 5 && `Você passou no teste` ||
+        `Tente novamente`
+
+    FinalString += `\nSua média: ${Total}`;
+    alert(FinalString);
+}
+
+function exercicio_9() {
+    let YearOfBirth = askForNumber(`Digite o ano de seu nascimento`);
+    let Age = CURRENT_YEAR - YearOfBirth;
+
+    let FinalString =
+        Age >= 16 && `Você pode votar com ${Age} anos de idade` ||
+        `Você não pode votar com ${Age} anos de idade, precisa ter no mínimo 16 anos`;
+
+    alert(FinalString);
+}
+
+function exercicio_10() {
+    let Sexo = askForString("Insira a letra que represente seu sexo\nM = Masculino\nF = Feminino"); // 🤨
+    while (Sexo.toUpperCase() != "M" && Sexo.toUpperCase() != "F") {
+        Sexo = askForString("Por favor, insira a letra corretamente que represente seu sexo\nM = Masculino\nF = Feminino");
+    }
+
+    let Altura = askForNumber("Digite a sua altura");
+    let Result = 0
+    if (Sexo == "M") {
+        Result = (72.7 * Altura) - 58;
+    } else {
+        Result = (62.1 * Altura) - 44.7;
+    }
+
+    alert(`O peso ideal para você é: ${Result}`);
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const Question1_6 = document.getElementById("1-5click");
+    const Question6_10 = document.getElementById("6-10click");
+    const MicroCalculator = document.getElementById("microCalculadoraClick");
+
+
+    Question1_6.addEventListener("click", function () {
+
+    })
+});

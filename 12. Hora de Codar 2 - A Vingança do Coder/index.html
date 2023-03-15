@@ -23,12 +23,12 @@
         </div>
 
         <div class="container-options">
-            <a href="" class="active">QUESTÕES 1-5</a>
-            <a href="">QUESTÕES 6-10</a>
-            <a href="">MICRO CALCULADORA</a>
+            <a class="active" id="1-5click">QUESTÕES 1-5</a>
+            <a class="notActive" id="6-10click">QUESTÕES 6-10</a>
+            <a class="notActive" id="microCalculadoraClick">MICRO CALCULADORA</a>
         </div>
 
-        <div class="container-question">
+        <div class="container-question" id="questions1-5">
             <div class="question">
                 <h2>[1] Escreva um programa em que o usuário informe dois números utilizando o "prompt". Então escreva
                     em tela o maior deles.</h2>
@@ -61,6 +61,37 @@
             </div>
         </div>
 
+        <div class="container-question" id="question6-10">
+            <div class="question">
+                <h2>[6] Faça um programa que receba quatro valores informados pelo usuário, mas informe somente o primeiro, o último e o maior de todos eles (considere que todos os números informados serão diferentes)</h2>
+
+                <button onClick="exercicio_6()">EXECUTAR</button>
+            </div>
+
+            <div class="question">
+                <h2>[7] Faça um programa que leia 6 números que o usuário vai informar. Todos os números lidos com valor inferior a 72 devem ser somados. Escreva o valor final da soma efetuada e também todos valores que o usuário informou.</h2>
+
+                <button onClick="exercicio_7()">EXECUTAR</button>
+            </div>
+
+            <div class="question">
+                <h2>[8] Escreva um programa que calcule a média de quatro números informados pelo usuário, mas somente se esses números forem maiores que 0 e menores que 10. No final, se a média for maior que cinco o usuário receberá uma mensagem "Você passou no teste". Em qualquer outra situação, ele receberá uma mensagem de "tente novamente"</h2>
+
+                <button onClick="exercicio_8()">EXECUTAR</button>
+            </div>
+
+            <div class="question">
+                <h2>[9] Escreva um programa para ler o ano de nascimento de uma pessoa e escrever uma mensagem que diga se ela poderá ou não votar este ano (não é necessário considerar o mês em que ela nasceu).</h2>
+
+                <button onClick="exercicio_9()">EXECUTAR</button>
+            </div>
+
+            <div class="question">
+                <h2>[10] Tendo como entrada a altura e o sexo (codificado da seguinte forma: 1: feminino 2: masculino) de uma pessoa, construa um programa que calcule e imprima seu peso ideal, utilizando as seguintes fórmulas:</h2>
+                <h2><img src="https://lh5.googleusercontent.com/skntScIan7mCTwNudF3yXDrnER4XadZqc1AkyikCoFx0JNycWRfP5CUmUlW-zgWaTn6Z5Lv96JP7DGdDiXDLaQ8Gd3X2HYBpJ3JucrW9gg1TBDU5VBETS26tobBbyF1IiQ=w320"></h2>
+                <button onClick="exercicio_10()">EXECUTAR</button>
+            </div>
+        </div>
     </div>
 </body>
 
