@@ -5,6 +5,7 @@
     --second-container-color: #C0C0C0;
     --third-container-color: #603AE8;
     --fourth-container-color: #7E8188;
+    --hover-button-color: black;
 
     font-size: 62.5%
 }
@@ -19,7 +20,6 @@ body {
     font-size: 1.6rem;
 
     min-height: 100vh;
-    background: rgb(253, 26, 98);
     background: linear-gradient(180deg, rgba(253, 26, 98, 1) 0%, rgba(251, 87, 52, 1) 100%);
 
     display: grid;
@@ -73,6 +73,7 @@ body {
     transition: border 250ms ease;
 
     user-select: none;
+    transition: all 250ms ease;
 }
 
 
@@ -88,6 +89,14 @@ body {
     border-bottom: 0.3rem solid;
     margin-bottom: -0.3rem;
     border-color: var(--second-container-color);
+}
+
+.container .container-options > *:hover:not(.active) {
+    background-color: var(--third-container-color);
+    color: var(--main-container-color);
+    border-color: var(--main-container-color);
+
+    transition: all 250ms ease;
 }
 
 .container .container-question .question {
@@ -124,6 +133,13 @@ body {
     outline: 0;
 
     box-shadow: 0.2rem 0.2rem 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
+    transition: background-color 250ms ease;
+}
+
+.container .container-question .question button:hover {
+    background-color: var(--hover-button-color);
+
+    transition: background-color 250ms ease;
 }
 
 #questions1-5 {
