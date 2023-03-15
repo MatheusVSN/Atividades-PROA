@@ -1,3 +1,28 @@
+function askForNumber(argument) {
+    let PresumedNumber = Number(prompt(argument));
+    while (isNaN(PresumedNumber)) {
+        PresumedNumber = Number(prompt(NUMBER_INVALID_QUESTION));
+    }
+
+    return PresumedNumber;
+}
+
+function exercicio_1() {
+    let FirstValue = askForNumber("Digite o número que vai representar o dividendo para a divisão");
+    let SecondValue = askForNumber("Digite o número que vai representar o divisor para a divisão");
+
+    while (SecondValue <= 0) {
+        SecondValue = askForNumber("Por favor, digite um valor que seja maior que 0");
+    }
+
+    let Result = FirstValue / SecondValue
+    alert(`O resultado da divisão é: ${Result}`)
+}
+
+function exercicio_2() {
+    window.open("./html/timerBomb.html");
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const QUESTIONS = {
         "1-6": document.getElementById("questions1-6"),
