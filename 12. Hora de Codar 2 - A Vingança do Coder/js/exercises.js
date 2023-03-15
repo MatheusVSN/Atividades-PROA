@@ -133,6 +133,7 @@ function exercicio_6() {
 function exercicio_7() {
     let FinalString = "Números que você digitou: ";
     let NumbersArray = [];
+    let NumbersLowerThan72 = [];
     let Total = 0;
     let Quantity = 6;
     for (let index = 1; index <= Quantity; index += 1) {
@@ -140,12 +141,15 @@ function exercicio_7() {
         NumbersArray.push(PresumedNumber);
         if (PresumedNumber < 72) {
             Total += PresumedNumber;
+            NumbersLowerThan72.push(PresumedNumber);    
         }
-        FinalString += PresumedNumber + ", ";
+        FinalString += PresumedNumber + " ";
     }
-
+    FinalString += "\nNúmeros menores que 72 e que vão ser somados: "
+    for (let index = 0; index < NumbersLowerThan72.length; index += 1) {
+        FinalString += NumbersLowerThan72[index] + " ";
+    }
     FinalString += "\nResultado da soma: " + Total;
-    FinalString += "\n(A soma só se aplica aos números que forem menor que 72)";
     alert(FinalString);
 }
 
