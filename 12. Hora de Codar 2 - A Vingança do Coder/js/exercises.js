@@ -2,7 +2,6 @@ const NUMBER_INVALID_QUESTION = "Por favor, digite um número valido";
 const STRING_INVALID_QUESTION = "Por favor, preencha a caixa de texto";
 const CURRENT_YEAR = new Date().getFullYear();
 
-
 function getTheHighestNumber(Array, Ammount) {
     let NumbersArray = Array
     let FinalArray = []
@@ -200,14 +199,60 @@ function exercicio_10() {
     alert(`O peso ideal para você é: ${Result}`);
 }
 
+function exercicio_micro_calculadora() {
+    let FirstNumber = askForNumber("Digite um número");
+    let SecondNumber = askForNumber("Digite outro número");
+    let Operation = askForNumber("Digite a forma de operação da conta\n1 = Soma\n2 = Subtração\n3 = Multiplicação\n4 = Divisão");
+
+    let Result = 0;
+    switch (Operation) {
+        case 1:
+            Result = FirstNumber + SecondNumber;
+            break;
+        case 2:
+            Result = FirstNumber - SecondNumber;
+            break;
+        case 3:
+            Result = FirstNumber * SecondNumber;
+            break;
+        case 4:
+            Result = FirstNumber / SecondNumber;
+            break;
+        default:
+            alert("Erro desconhecido, tenha certeza de que você colocou uma das operações válidas");
+            break;
+    }
+
+    alert(`O resultado da operação é: ${Result}`);
+}
 
 document.addEventListener("DOMContentLoaded", function () {
+    const QUESTIONS = {
+        "1-5": document.getElementById("questions1-5"),
+        "6-10": document.getElementById("questions6-10"),
+        "microCalculadora": document.getElementById("microCalculadora")
+    }
     const Question1_6 = document.getElementById("1-5click");
     const Question6_10 = document.getElementById("6-10click");
     const MicroCalculator = document.getElementById("microCalculadoraClick");
 
+    function ToggleElements(Argument) {
+        Question1_6.setAttribute("class", Argument == 1 ? "active" : "notActive");
+        Question6_10.setAttribute("class", Argument == 2 ? "active" : "notActive");
+        MicroCalculator.setAttribute("class", Argument == 3 ? "active" : "notActive");
+    
+        QUESTIONS["1-5"].style.display = Argument == 1 ? "block" : "none";
+        QUESTIONS["6-10"].style.display = Argument == 2 ? "block" : "none";
+        QUESTIONS["microCalculadora"].style.display = Argument == 3 ? "block" : "none";
+    }
 
-    Question1_6.addEventListener("click", function () {
-
+    Question1_6.addEventListener("click", function() {
+        ToggleElements(1);
+    })
+    Question6_10.addEventListener("click", function() {
+        ToggleElements(2);
+    })
+    MicroCalculator.addEventListener("click", function() {
+        ToggleElements(3);
     })
 });
