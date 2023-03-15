@@ -1,0 +1,32 @@
+:root {
+    --nav-bar-color: #24252a;
+    --nav-bar-text-color: white;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
+    background-color: var(--nav-bar-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    padding: 0px 20px;
+}
+
+.nav-links li a {
+    color: var(--nav-bar-text-color);
+    text-decoration: none;
+}
