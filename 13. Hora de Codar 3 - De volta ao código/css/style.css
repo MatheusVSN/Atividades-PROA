@@ -1,32 +1,149 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
 :root {
-    --nav-bar-color: #24252a;
-    --nav-bar-text-color: white;
+    --header-color: linear-gradient(to left, #7A4ABA, #A91DFF);
+    --main-container-color: #FFFFFF;
+    --second-container-color: #C0C0C0;
+    --third-container-color: #603AE8;
+    --fourth-container-color: #7E8188;
+    --hover-button-color: black;
 }
 
 * {
-    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
     margin: 0;
     padding: 0;
 }
 
 header {
+    overflow: hidden;
+    background: var(--header-color);
+    height: 150px;
+
+    display: grid;
+    place-items: center;
+}
+
+header h1 {
+    color: white;
+    text-align: center;
+}
+
+main {
+    display: grid;
+    place-items: center;
+}
+
+.line {
+    border-top: 3px solid var(--third-container-color);
+    width: 100%;
+}
+
+.container {
+    overflow: hidden;
+    background-color: var(--main-container-color);
+    width: clamp(350px, 75%, 1000px);
+    padding: 16px;
+    border-radius: 4px;
+
+    position: relative;
+    bottom: 25px;
+}
+
+.container .container-options {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 10px 10%;
-    background-color: var(--nav-bar-color);
+
+    margin-bottom: 30px;
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-}
+.container .container-options>* {
+    background-color: var(--second-container-color);
 
-.nav-links li {
-    padding: 0px 20px;
-}
+    width: 50%;
+    height: 50px;
 
-.nav-links li a {
-    color: var(--nav-bar-text-color);
+    text-align: center;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 15px;
+    font-weight: bold;
+
     text-decoration: none;
+
+    transition: border 250ms ease;
+
+    user-select: none;
+    transition: all 250ms ease;
+}
+
+.container .container-options>*.active {
+    color: var(--third-container-color);
+    border-bottom: 3px solid;
+    margin-bottom: -3px;
+    border-color: var(--third-container-color);
+}
+
+.container .container-options>*.notActive {
+    color: var(--fourth-container-color);
+    border-bottom: 3px solid;
+    margin-bottom: -3px;
+    border-color: var(--second-container-color);
+}
+
+.container .container-options>*:hover:not(.active) {
+    background-color: var(--third-container-color);
+    color: var(--main-container-color);
+    border-color: var(--main-container-color);
+
+    transition: all 250ms ease;
+}
+
+.container .container-question .question h2 {
+    align-items: center;
+    text-align: left;
+    font-size: 20px;
+
+    max-width: 100%;
+
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.container .container-question .question button {
+    background-color: var(--third-container-color);
+    color: var(--main-container-color);
+    border: none;
+
+    height: 50px;
+    width: 100%;
+
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    align-items: center;
+    text-align: center;
+
+    font-weight: bold;
+    outline: 0;
+
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+    transition: background-color 250ms ease;
+}
+
+.container .container-question .question button:hover {
+    background-color: var(--hover-button-color);
+
+    transition: background-color 250ms ease;
+}
+
+#questions1-6 {
+    display: block;
+}
+
+#questions7-11 {
+    display: none;
 }
