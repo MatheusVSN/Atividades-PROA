@@ -145,8 +145,6 @@ function exercicio_6() {
             ApprovedStudentsQuantity += 1;
         }
     }
-
-
     alert(`${FinalString}\n No total foram ${ApprovedStudentsQuantity} de ${StudentIndex} estudantes aprovados`);
 }
 
