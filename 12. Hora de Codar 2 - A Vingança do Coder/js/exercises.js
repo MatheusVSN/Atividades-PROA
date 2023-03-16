@@ -21,13 +21,6 @@ function getTheHighestNumber(Array, Ammount) {
     return FinalArray
 }
 
-function checkIntegrity(argument) {
-    if (typeof (argument) == "string") {
-        return ((argument.length == 0 || argument.trim()) && argument || null);
-    }
-    return null;
-}
-
 function askForNumber(argument) {
     let PresumedNumber = Number(prompt(argument));
     while (isNaN(PresumedNumber)) {
