@@ -2,23 +2,19 @@ const NUMBER_INVALID_QUESTION = "Por favor, digite um número valido";
 const STRING_INVALID_QUESTION = "Por favor, preencha a caixa de texto";
 
 class Student {
-    constructor(name, firstGrade, lastGrade, approvedByTest) {
-        this.Name = name;
-        this.FirstGrade = firstGrade;
-        this.LastGrade = lastGrade;
-        this.ApprovedByTest = approvedByTest || false;
-        this.PresumedTest = null;
-        this.ApprovedByTestGrade = null;
+    constructor(name, grade) {
+        this.Name = name
+        this.Grade = grade
     }
 
     getMedia() {
-        return (this.LastGrade + this.FirstGrade) / 2;
-    }
+        let Total = 0;
+        for (let index = 0; index < this.Grade.length; index += 1) {
+            Total += this.Grade[index];
+        }
 
-    approvedByTest(number, grade) {
-        this.ApprovedByTest = true;
-        this.PresumedTest = number;
-        this.ApprovedByTestGrade = grade
+        Total /= this.Grade.length
+        return Total
     }
 }
 
@@ -57,10 +53,15 @@ function exercicio_2() {
 }
 
 function exercicio_3() {
+    let FinalString = "";
     for (let index = 10; index > 0; index -= 1) {
-        console.log(index);
+        if (index != 1) {
+            FinalString += `${index}, `
+        } else {
+            FinalString += index
+        }
     }
-    console.log("\n");
+    console.log(FinalString);
     alert("Cheque o console do seu navegador");
 }
 
@@ -118,11 +119,7 @@ function exercicio_6() {
             SecondGrade = askForNumber(`Por favor, digite um número que esteja entre 0 e 10`);
         }
 
-        let PresumedStudent = new Student(StudentIndex, FirstGrade, SecondGrade);
-        if (FirstGrade >= 9.5 || SecondGrade >= 9.5) {
-            PresumedStudent.approvedByTest(FirstGrade > 5 ? 1 : 2, FirstGrade > 5 ? FirstGrade : SecondGrade);
-        }
-
+        let PresumedStudent = new Student(StudentIndex, [FirstGrade, SecondGrade]);
         StudentArray.push(PresumedStudent);
 
         let WantToContinue = confirm(`Deseja calcular a média de outro aluno?`);
@@ -136,16 +133,94 @@ function exercicio_6() {
 
     for (let Index in StudentArray) {
         let PresumedStudent = StudentArray[Index];
-        if (PresumedStudent.getMedia() >= 5 && PresumedStudent.ApprovedByTest == false) {
+        if (PresumedStudent.getMedia() >= 9.5) {
             ApprovedStudents[PresumedStudent.Name] = PresumedStudent.getMedia();
             FinalString += `O aluno ${PresumedStudent.Name} está aprovado com média de: ${PresumedStudent.getMedia()}\n`;
-            ApprovedStudentsQuantity += 1;
-        } else if (PresumedStudent.ApprovedByTest == true) {
-            FinalString += `O aluno ${PresumedStudent.Name} foi aprovado devido tirar 9.5 ou maior na prova ${PresumedStudent.PresumedTest} com nota de: ${PresumedStudent.ApprovedByTestGrade}. Entretanto sua média é: ${PresumedStudent.getMedia()}\n`
             ApprovedStudentsQuantity += 1;
         }
     }
     alert(`${FinalString}\n No total foram ${ApprovedStudentsQuantity} de ${StudentIndex} estudantes aprovados`);
+}
+
+function exercicio_7() {
+    let FinalString = "";
+    let Exams = [];
+    for (let ExamIndex = 1; ExamIndex <= 6; ExamIndex += 1) {
+        let ExamGrade = askForNumber(`Digite a nota do aluno na prova ${ExamIndex}`);
+        while (ExamGrade < 0 || ExamGrade > 10) {
+            ExamGrade = askForNumber(`Por favor, digite um número que esteja entre 0 e 10`);
+        }
+        Exams.push(ExamGrade);
+    }
+
+    let PresumedStudent = new Student(1, Exams);
+    FinalString += `A média do aluno é igual a: ${PresumedStudent.getMedia()}\n`;
+    alert(FinalString);
+}
+
+function exercicio_8() {
+    let FinalString = "";
+    let StartRange = 1;
+    let EndRange = parseInt(askForNumber(`Digite um número maior que 0`));
+    while (EndRange <= 0) {
+        EndRange = parseInt(askForNumber(`Digite um número maior que 0`));
+    }
+
+    for (StartRange; StartRange <= EndRange; StartRange += 1) {
+        if (StartRange != EndRange) {
+            FinalString += `${StartRange}, `
+        } else {
+            FinalString += StartRange
+        }
+    }
+    console.log(FinalString);
+    alert(`Cheque o console do seu navegador`);
+}
+
+function exercicio_9() {
+    let StartRange = 100;
+    let EndRange = StartRange + 10;
+    let FinalString = "";
+
+    for (StartRange; StartRange <= EndRange; StartRange += 1) {
+        if (StartRange == 100) {
+            continue;
+        } else if (StartRange != EndRange) {
+            FinalString += `${StartRange}, `;
+        } else {
+            FinalString += StartRange;
+        }
+    }
+
+    console.log(FinalString);
+    alert(`Cheque o console do seu navegador`);
+}
+
+function exercicio_10() {
+    let FinalString = "";
+    let StartRange = 1;
+    let EndRange = parseInt(askForNumber(`Escolha o limite onde a tabuada vai\n(obs: a tabuada vai começar no 1)`));
+
+    while (EndRange < StartRange) {
+        EndRange = parseInt(askForNumber(`Por favor, digite um número maior que ${StartRange}`));
+    }
+    
+    FinalString += `\\ Tabuada do ${StartRange} ao ${EndRange} \\\n`;
+    for (StartRange; StartRange <= EndRange; StartRange += 1) {
+        FinalString += `\\ Tabuada do ${StartRange} \\\n`
+        for (let Multiplier = 1; Multiplier <= 10; Multiplier += 1){
+            if (Multiplier != 10) {
+                FinalString += `${StartRange} * ${Multiplier} = ${StartRange * Multiplier}, `;
+            } else {
+                FinalString += `${StartRange} * ${Multiplier} = ${StartRange * Multiplier}`;
+            }
+            FinalString += "\n";
+        }
+        FinalString += "\n\n";
+    }
+
+    console.log(FinalString);
+    alert(`Cheque o colsone do seu navegador`);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
