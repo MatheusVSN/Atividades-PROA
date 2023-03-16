@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 document.write("EXPLOSÃO");
             }
-        }, 500)
+        }, 100)
     }
 
     mainLoop(30);

@@ -223,6 +223,35 @@ function exercicio_10() {
     alert(`Cheque o colsone do seu navegador`);
 }
 
+function exercicio_11() {
+    let Min = 24;
+    let Max = 42;
+
+    let FinalString = "";
+
+    let NumbersArray = [];
+    NumbersArray["WithinRange"] = [];
+    NumbersArray["OutsideRange"] = [];
+
+    for (let index = 1; index <= 10; index += 1) {
+        let PresumedNumber = askForNumber(`[${index}] Digite um número`);
+        if (PresumedNumber >= Min && PresumedNumber <= Max) {
+            NumbersArray["WithinRange"].push(PresumedNumber);
+        } else {
+            NumbersArray["OutsideRange"].push(PresumedNumber);
+        }
+    }
+
+    let FirstPart = `${NumbersArray["WithinRange"].length} estão dentro do intervalo\n${NumbersArray["WithinRange"].slice(0, NumbersArray["WithinRange"].length)}`;
+    let FinalPart = `${NumbersArray["OutsideRange"].length} estão fora do intervalo\n${NumbersArray["OutsideRange"].slice(0, NumbersArray["OutsideRange"].length)}`;
+
+    FinalString += FirstPart;
+    FinalString += `\n\n`;
+    FinalString += FinalPart;
+
+    alert(FinalString);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const QUESTIONS = {
         "1-6": document.getElementById("questions1-6"),
