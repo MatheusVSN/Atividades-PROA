@@ -5,11 +5,28 @@ const COMANDO_PARAR_DIARIA = "PARE";
 const ANOS_PARA_DIARIA_GRATUITA = 6;
 const ANOS_PARA_MEIA_DIARIA = 60;
 const QUANTIDADE_MAXIMA_DO_SALAO = 350;
+const QUANTIDADE_MAXIMA_DO_AUDITORIO = 350;
+const QUANTIDADE_DE_LITROS = 40;
 
 const VALORES_COMIDA = {
     "Cafe": {Preco: 0.8, QuantiaPorConvidado: 0.2},
     "Agua": {Preco: 0.4, QuantiaPorConvidado: 0.5},
     "Salgado": {Preco: 34, QuantiaPorConvidado: 7},
+}
+
+const AUDITORIOS = {
+    "Laranja": {Lugares: 150, Adicionais: 700},
+    "Colorado": {Lugares: 350, Adicionais: 0}
+}
+
+const DIA_DA_SEMANA = {
+    1: "domingo",
+    2: "segunda",
+    3: "terca",
+    4: "quarta",
+    5: "quinta",
+    6: "sexta",
+    7: "sabado" 
 }
 
 var Verified = false;
@@ -45,6 +62,23 @@ function askForPassword() {
     Verified = true
 }
 
+function findWhitinObject(objectValue, string) {
+    let Found = null;
+    for (let Index in objectValue) {
+        let CurrentIndex = objectValue[Index];
+        if (CurrentIndex == string) {
+            Found = {index: Index, dia: CurrentIndex};
+        }
+    }
+
+    return Found;
+}
+
+var DiaInvalido = "Por favor, insira um dia da semana válido.\nLista de dias disponíveis:\n";
+for (let index in DIA_DA_SEMANA) {
+    DiaInvalido += `[${index}] ${DIA_DA_SEMANA[index]}\n`;
+}
+
 function Main() {
     if (Verified == false) {
         askForPassword();
@@ -71,9 +105,17 @@ function Main() {
             HoraDeComer();
             break;
         case 6:
+            AuditorioParaQuantos();
+            break;
         case 7:
+            QueHorasVocePode();
+            break;
         case 8:
+            AlcoolOuGasolina();
+            break;
         case 9:
+            ArPuroFinalmente();
+            break;
         case 10:
             Sair();
             break;
@@ -273,6 +315,135 @@ function HoraDeComer() {
 
     alert(Confirmacao == "S" ? `${NomeDoUsuario}, reserva efetuada com sucesso` : `${NomeDoUsuario}, reserva não efetuada`);
     Main();
+}
+
+function AuditorioParaQuantos() {
+    let FinalString = "";
+    let NumerosDeConvidados = askForNumber(`Qual o número de convidados para o seu evento?`);
+    while (NumerosDeConvidados <= 0 || NumerosDeConvidados > QUANTIDADE_MAXIMA_DO_AUDITORIO) {
+        alert(NumerosDeConvidados <= 0 ? `Por favor, digite um número maior que 0` : `Quantidade de convidados superior à capacidade máxima`);
+        NumerosDeConvidados = askForNumber(`Qual o número de convidados para o evento`);
+    }
+
+    if (NumerosDeConvidados < (AUDITORIOS["Laranja"].Lugares + AUDITORIOS["Laranja"].Adicionais)) {
+        if (NumerosDeConvidados < AUDITORIOS["Laranja"].Lugares) {
+            FinalString = `Use o auditório Laranja`;
+        } else {
+            FinalString = `User o auditório Laranja (Inclua mais ${NumerosDeConvidados - AUDITORIOS["Laranja"].Lugares} cadeiras)`;
+        }
+    } else {
+        FinalString = `Use o auditório Colorado`;
+    }
+
+    alert(FinalString);
+
+    let Confirmacao = askForString(`Gostaria de efetuar a reserva? S/N`).toUpperCase();
+    while (Confirmacao != "S" && Confirmacao != "N") {
+        alert(`Por favor, escolha S ou N`);
+        Confirmacao = askForString(`Gostaria de efetuar a reserva? S/N`).toUpperCase();
+    }
+
+    alert(Confirmacao == "S" ? `${NomeDoUsuario}, reserva efetuada com sucesso` : `${NomeDoUsuario}, reserva não efetuada`);
+    Main();
+}
+
+function QueHorasVocePode() {
+    let DiaDoEvento = askForString(`Qual o dia do seu evento?`).toLocaleLowerCase();
+    let DiaEncontrado = findWhitinObject(DIA_DA_SEMANA, DiaDoEvento);
+    let Range = {Minimo: 0, Maximo: 0};
+    /*
+    DiaEncontrado tenta encontrar pelo constante "DIA_DA_SEMANA" o dia que o usuario colocou
+    Ele retorna 2 valores:
+        index : number = equivalente ao número do dia
+        dia : string = equivalente ao nome do dia
+    */
+
+    while (!DiaEncontrado) {
+        alert(DiaInvalido);
+        DiaDoEvento = askForString(`Qual o dia do seu evento?`).toLocaleLowerCase();
+        DiaEncontrado = findWhitinObject(DIA_DA_SEMANA, DiaDoEvento);
+    }
+
+    let HorarioDito = askForNumber(`Qual a hora do seu evento?`);
+    while (HorarioDito < 0 || HorarioDito > 24) {
+        alert(HorarioDito < 0 ? `Por favor, insira um número maior que 0` : `Por favor, insira um número menor que 24`);
+        HorarioDito = askForNumber(`Qual a hora do seu evento>`);
+    }
+
+    if (DiaEncontrado.index <= 1) {
+        // Domingo 
+        Range.Minimo = 7
+        Range.Maximo = 15
+
+        if (HorarioDito < Range.Minimo || HorarioDito > Range.Maximo) {
+            alert(`Restaurante indisponível`);
+            Main();
+            return
+        }
+
+        let NomeDaEmpresa = askForString(`Qual o nome da empresa?`);
+        alert(`Restaurante reservado para ${NomeDaEmpresa}. ${DiaDoEvento} as ${HorarioDito}`);
+        Main();
+        return;
+    }
+
+    // Restantes dos dias
+    Range.Minimo = 7;
+    Range.Maximo = 23;
+
+    if (HorarioDito < Range.Minimo || HorarioDito > Range.Maximo) {
+        alert(`Restaurante indisponível`);
+        Main();
+        return
+    }
+
+    let NomeDaEmpresa = askForString(`Qual o nome da empresa?`);
+    alert(`Restaurante reservado para ${NomeDaEmpresa}. ${DiaDoEvento} as ${HorarioDito}`);
+    Main();
+}
+
+function AlcoolOuGasolina() {
+    let AlcoolWayneOil = askForNumber(`Qual o valor do álcool no posto Wayne Oil`) * QUANTIDADE_DE_LITROS;
+    let GasolinaWayneOil = askForNumber(`Qual o valor da gasolina no posto Wayne Oil?`) * QUANTIDADE_DE_LITROS;
+    let AlcoolStarkPetrol = askForNumber(`Qual o valor do álcool no posto Stark Petrol`) * QUANTIDADE_DE_LITROS;
+    let GasolinaStarkPetrol = askForNumber(`Qual o valor da gasolina no posto Stark Petrol?`) * QUANTIDADE_DE_LITROS;
+
+    let MaisBarato = {
+        "Gasolina" : {
+            Posto: null,
+            Preco: null
+        },
+
+        "Alcool" : {
+            Posto: null,
+            Preco: null
+        }
+    }
+
+    function pegar_posto_mais_barato() {
+        let GasolinaMaisBarata = GasolinaStarkPetrol < GasolinaWayneOil;
+        let AlcoolMaisBarato = AlcoolStarkPetrol < AlcoolWayneOil;
+
+        MaisBarato["Gasolina"].Posto = GasolinaMaisBarata == true ? "Stark Petrol" : "Wayne Oil";
+        MaisBarato["Gasolina"].Preco = GasolinaMaisBarata == true ? GasolinaStarkPetrol : GasolinaWayneOil;
+
+        MaisBarato["Alcool"].Posto = AlcoolMaisBarato == true ? "Stark Petrol" : "Wayne Oil";
+        MaisBarato["Alcool"].Preco = AlcoolMaisBarato == true ? AlcoolStarkPetrol : AlcoolWayneOil;
+    }
+
+    pegar_posto_mais_barato();
+    let Comparacao = (MaisBarato.Alcool.Preco) / (MaisBarato.Alcool.Preco + MaisBarato.Alcool.Preco) * 100;
+    if (Comparacao <= 30) {
+        alert(`${NomeDoUsuario}, é mais barato abastecer com Alcool no posto ${MaisBarato["Alcool"].Posto}`);
+        Main();
+        return
+    }
+    alert(`${NomeDoUsuario}, é mais barato abastecer com Gasolina no posto ${MaisBarato["Gasolina"].Posto}`);
+    Main();
+}
+
+function ArPuroFinalmente() {
+
 }
 
 function Error() {
