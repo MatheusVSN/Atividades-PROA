@@ -5,6 +5,11 @@ const COMANDO_PARAR_DIARIA = "PARE";
 const ANOS_PARA_DIARIA_GRATUITA = 6;
 const ANOS_PARA_MEIA_DIARIA = 60;
 
+var Verified = false;
+var NomeDoHotel = prompt(`Qual o nome do hotel`);
+alert(`O nome do Hotel é ${NomeDoHotel}`);
+var NomeDoUsuario = prompt(`Qual o seu nome?`);
+
 function askForNumber(argument) {
     let PresumedNumber = Number(prompt(argument));
     while (isNaN(PresumedNumber)) {
@@ -23,13 +28,21 @@ function askForString(argument) {
     return PresumedString;
 }
 
+function askForPassword() {
+    let PresumedPassword = Number(prompt(`Por favor ${NomeDoUsuario}, digite a senha`));
 
-var NomeDoHotel = prompt(`Qual o nome do hotel`);
-alert(`O nome do Hotel é ${NomeDoHotel}`);
+    while (PresumedPassword != PASSWORD) {
+        PresumedPassword = Number(prompt(`Senha errada! Tente novamente`));
+    }
 
-var NomeDoUsuario = prompt(`Qual o seu nome?`);
+    Verified = true
+}
 
 function Main() {
+    if (Verified == false) {
+        askForPassword();
+    }
+
     alert(`Bem vindo ao Hotel ${NomeDoHotel}, ${NomeDoUsuario}. É um imenso prazer ter você or aqui!`);
 
     let Escolha = parseInt(prompt(`Selecione uma opção\n[1] Quantos quartos são?\n[2] Como soletra?\n[3] Com "S" ou com "Z"\n[4] Festa ou trabalho?\n[5] Hora de comer\n[6] Auditório para quantos?\n[7] Que horas você pode?\n[8] Álcool ou gasolina?\n[9] Ar puro, finalmente\n[10] Sair`));
@@ -45,6 +58,8 @@ function Main() {
             ComSouZ();
             break;
         case 4:
+            FestaOuTrabalho();
+            break;
         case 5:
         case 6:
         case 7:
@@ -71,6 +86,7 @@ function QuantosQuartosSao() {
     }
 
     let Preco = ValorPadraoDaDiaria * Diarias;
+    Preco = Preco.toFixed(2);
     alert(`O valor de ${Diarias} dia(s) de hospedagem é de R$${Preco}`);
 
     let NomeDoHospede = askForString(`Qual o nome do hospede?`);
@@ -78,14 +94,10 @@ function QuantosQuartosSao() {
     Confirmacao = Confirmacao.toUpperCase();
     while (Confirmacao != "S" && Confirmacao != "N") {
         Confirmacao = askForString(`Por favor, escolha S ou N`);
+        Confirmacao = Confirmacao.toUpperCase();
     }
 
-    if (Confirmacao == "S") {
-        alert(`${NomeDoUsuario}, reserva efetuada para ${NomeDoHospede}. O valor total é de R$${Preco}`);
-    } else {
-        alert(`${NomeDoUsuario}, reserva não efetuada`);
-    }
-
+    alert(Confirmacao == "S" ? `${NomeDoUsuario}, reserva efetuada para ${NomeDoHospede}. O valor total é de R$${Preco}` : `${NomeDoUsuario}, reserva não efetuada`);
     Main();
 }
 
@@ -121,7 +133,8 @@ function ComoSoletra() {
             return
         }
 
-        alert(`${NomeDoUsuario}, o valor total das hospedagens é: ${ValorTotal}; ${ValorGratuidade} gratuidade(s); ${ValorMeia} meia(s)`);
+        ValorTotal = ValorTotal.toFixed(2);
+        alert(`${NomeDoUsuario}, o valor total das hospedagens é: R$${ValorTotal}; ${ValorGratuidade} gratuidade(s); ${ValorMeia} meia(s)`);
         Main();
     }
 
@@ -188,6 +201,40 @@ function ComSouZ() {
     }
 
     main();
+}
+
+function FestaOuTrabalho() {
+    let Total = 0;
+
+    let DuracaoDoEventoEmHoras = askForNumber(`Qual a duração do evento em horas?`);
+    while (DuracaoDoEventoEmHoras <= 0) {
+        alert(`Por favor, insira um número maior que 0`);
+        DuracaoDoEventoEmHoras = askForNumber(`Qual a duração do evento em horas?`);
+    }
+
+    let QuantidadeDeGarcons = askForNumber(`Quantos garçons serão necessários?`);
+    while (QuantidadeDeGarcons <= 0) {
+        alert(`Por favor, insira um número maior que 0`);
+        QuantidadeDeGarcons = askForNumber(`Quantos garçons serão necessários?`);
+    }
+
+    for (let index = 1; index <= QuantidadeDeGarcons; index += 1) {
+        Total += DuracaoDoEventoEmHoras * 10.50;
+    }
+
+    Total = Total.toFixed(2);
+
+    alert(`O custo total é: R$${Total}`);
+    let Confirmacao = askForString(`Gostaria de efetuar a reserva? S/N`);
+    Confirmacao = Confirmacao.toUpperCase();
+    while (Confirmacao != "S" && Confirmacao != "N") {
+        alert(`Por favor, escolha S ou N`);
+        Confirmacao = askForString(`Gostaria de efetuar a reserva? S/N`);
+        Confirmacao = Confirmacao.toUpperCase();
+    }
+
+    alert(Confirmacao == "S" ? `${NomeDoUsuario}, reserva efetuada com sucesso` : `${NomeDoUsuario}, reserva não efetuada`);
+    Main();
 }
 
 function Error() {
