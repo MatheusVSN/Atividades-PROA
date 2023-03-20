@@ -4,6 +4,13 @@ const STRING_INVALID_QUESTION = "Por favor, preencha a caixa de texto";
 const COMANDO_PARAR_DIARIA = "PARE";
 const ANOS_PARA_DIARIA_GRATUITA = 6;
 const ANOS_PARA_MEIA_DIARIA = 60;
+const QUANTIDADE_MAXIMA_DO_SALAO = 350;
+
+const VALORES_COMIDA = {
+    "Cafe": {Preco: 0.8, QuantiaPorConvidado: 0.2},
+    "Agua": {Preco: 0.4, QuantiaPorConvidado: 0.5},
+    "Salgado": {Preco: 34, QuantiaPorConvidado: 7},
+}
 
 var Verified = false;
 var NomeDoHotel = prompt(`Qual o nome do hotel`);
@@ -61,6 +68,8 @@ function Main() {
             FestaOuTrabalho();
             break;
         case 5:
+            HoraDeComer();
+            break;
         case 6:
         case 7:
         case 8:
@@ -90,11 +99,9 @@ function QuantosQuartosSao() {
     alert(`O valor de ${Diarias} dia(s) de hospedagem é de R$${Preco}`);
 
     let NomeDoHospede = askForString(`Qual o nome do hospede?`);
-    let Confirmacao = askForString(`${NomeDoUsuario}, você confirma a hospedagem para ${NomeDoHospede} por ${Diarias}? S/N`);
-    Confirmacao = Confirmacao.toUpperCase();
+    let Confirmacao = askForString(`${NomeDoUsuario}, você confirma a hospedagem para ${NomeDoHospede} por ${Diarias}? S/N`).toUpperCase();
     while (Confirmacao != "S" && Confirmacao != "N") {
         Confirmacao = askForString(`Por favor, escolha S ou N`);
-        Confirmacao = Confirmacao.toUpperCase();
     }
 
     alert(Confirmacao == "S" ? `${NomeDoUsuario}, reserva efetuada para ${NomeDoHospede}. O valor total é de R$${Preco}` : `${NomeDoUsuario}, reserva não efetuada`);
@@ -225,12 +232,43 @@ function FestaOuTrabalho() {
     Total = Total.toFixed(2);
 
     alert(`O custo total é: R$${Total}`);
-    let Confirmacao = askForString(`Gostaria de efetuar a reserva? S/N`);
-    Confirmacao = Confirmacao.toUpperCase();
+    let Confirmacao = askForString(`Gostaria de efetuar a reserva? S/N`).toUpperCase();
     while (Confirmacao != "S" && Confirmacao != "N") {
         alert(`Por favor, escolha S ou N`);
         Confirmacao = askForString(`Gostaria de efetuar a reserva? S/N`);
-        Confirmacao = Confirmacao.toUpperCase();
+    }
+
+    alert(Confirmacao == "S" ? `${NomeDoUsuario}, reserva efetuada com sucesso` : `${NomeDoUsuario}, reserva não efetuada`);
+    Main();
+}
+
+function HoraDeComer() {
+    let NumerosDeConvidados = askForNumber(`Qual o número de convidados para o evento`);
+    while (NumerosDeConvidados <= 0 || NumerosDeConvidados > QUANTIDADE_MAXIMA_DO_SALAO) {
+        alert(NumerosDeConvidados <= 0 ? `Por favor, digite um número maior que 0` : `Quantidade de convidados superior à capacidade máxima`);
+        NumerosDeConvidados = askForNumber(`Qual o número de convidados para o evento`);
+    }
+
+    let ValorTotal = 0;
+    /*
+    Tive que dividir o calculo em pedaços
+    */ 
+    ValorTotal += (((NumerosDeConvidados * VALORES_COMIDA["Salgado"].QuantiaPorConvidado) * VALORES_COMIDA["Salgado"].Preco) * 0.01);
+    ValorTotal += ((NumerosDeConvidados * VALORES_COMIDA["Cafe"].QuantiaPorConvidado) * VALORES_COMIDA["Cafe"].Preco);
+    ValorTotal += ((NumerosDeConvidados * VALORES_COMIDA["Agua"].QuantiaPorConvidado) * VALORES_COMIDA["Agua"].Preco);
+
+    ValorTotal = ValorTotal.toFixed(2);
+
+    let QuantidadeDeCafe = NumerosDeConvidados * VALORES_COMIDA["Cafe"].QuantiaPorConvidado;
+    let QuantidadeDeAgua = NumerosDeConvidados * VALORES_COMIDA["Agua"].QuantiaPorConvidado;
+    let QuantiaDeSalgados = NumerosDeConvidados * VALORES_COMIDA["Salgado"].QuantiaPorConvidado;
+
+    alert(`O evento precisará de ${QuantidadeDeCafe} litros de café, ${QuantidadeDeAgua} litros de água, ${QuantiaDeSalgados} salgados. O custo total do evento será de R$${ValorTotal}`);
+
+    let Confirmacao = askForString(`Gostaria de efetuar a reserva? S/N`).toUpperCase();
+    while (Confirmacao != "S" && Confirmacao != "N") {
+        alert(`Por favor, escolha S ou N`);
+        Confirmacao = askForString(`Gostaria de efetuar a reserva? S/N`).toUpperCase();
     }
 
     alert(Confirmacao == "S" ? `${NomeDoUsuario}, reserva efetuada com sucesso` : `${NomeDoUsuario}, reserva não efetuada`);
