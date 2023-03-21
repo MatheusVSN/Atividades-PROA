@@ -15,7 +15,7 @@ const VALORES_COMIDA = {
 }
 
 const AUDITORIOS = {
-    "Laranja": { Lugares: 150, Adicionais: 700 },
+    "Laranja": { Lugares: 150, Adicionais: 70 },
     "Colorado": { Lugares: 350, Adicionais: 0 }
 }
 
