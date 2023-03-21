@@ -9,14 +9,14 @@ const QUANTIDADE_MAXIMA_DO_AUDITORIO = 350;
 const QUANTIDADE_DE_LITROS = 40;
 
 const VALORES_COMIDA = {
-    "Cafe": {Preco: 0.8, QuantiaPorConvidado: 0.2},
-    "Agua": {Preco: 0.4, QuantiaPorConvidado: 0.5},
-    "Salgado": {Preco: 34, QuantiaPorConvidado: 7},
+    "Cafe": { Preco: 0.8, QuantiaPorConvidado: 0.2 },
+    "Agua": { Preco: 0.4, QuantiaPorConvidado: 0.5 },
+    "Salgado": { Preco: 34, QuantiaPorConvidado: 7 },
 }
 
 const AUDITORIOS = {
-    "Laranja": {Lugares: 150, Adicionais: 700},
-    "Colorado": {Lugares: 350, Adicionais: 0}
+    "Laranja": { Lugares: 150, Adicionais: 700 },
+    "Colorado": { Lugares: 350, Adicionais: 0 }
 }
 
 const DIA_DA_SEMANA = {
@@ -26,7 +26,14 @@ const DIA_DA_SEMANA = {
     4: "quarta",
     5: "quinta",
     6: "sexta",
-    7: "sabado" 
+    7: "sabado"
+}
+
+class EmpresaArCondicionado {
+    constructor(nome, preco) {
+        this.Nome = nome;
+        this.Preco = preco;
+    }
 }
 
 var Verified = false;
@@ -67,7 +74,7 @@ function findWhitinObject(objectValue, string) {
     for (let Index in objectValue) {
         let CurrentIndex = objectValue[Index];
         if (CurrentIndex == string) {
-            Found = {index: Index, dia: CurrentIndex};
+            Found = { index: Index, dia: CurrentIndex };
         }
     }
 
@@ -79,49 +86,36 @@ for (let index in DIA_DA_SEMANA) {
     DiaInvalido += `[${index}] ${DIA_DA_SEMANA[index]}\n`;
 }
 
+
+const OPCOES = {
+    1: QuantosQuartosSao,
+    2: ComoSoletra,
+    3: ComSouZ,
+    4: FestaOuTrabalho,
+    5: HoraDeComer,
+    6: AuditorioParaQuantos,
+    7: QueHorasVocePode,
+    8: AlcoolOuGasolina,
+    9: ArPuroFinalmente,
+    10: Sair
+}
+
 function Main() {
     if (Verified == false) {
         askForPassword();
     }
 
     alert(`Bem vindo ao Hotel ${NomeDoHotel}, ${NomeDoUsuario}. É um imenso prazer ter você or aqui!`);
-
     let Escolha = parseInt(prompt(`Selecione uma opção\n[1] Quantos quartos são?\n[2] Como soletra?\n[3] Com "S" ou com "Z"\n[4] Festa ou trabalho?\n[5] Hora de comer\n[6] Auditório para quantos?\n[7] Que horas você pode?\n[8] Álcool ou gasolina?\n[9] Ar puro, finalmente\n[10] Sair`));
+    let Check = Escolha >= 1 && Escolha <= 10 ? 1 : 2;
 
-    switch (Escolha) {
+    switch (Check) {
         case 1:
-            QuantosQuartosSao();
-            break;
-        case 2:
-            ComoSoletra();
-            break;
-        case 3:
-            ComSouZ();
-            break;
-        case 4:
-            FestaOuTrabalho();
-            break;
-        case 5:
-            HoraDeComer();
-            break;
-        case 6:
-            AuditorioParaQuantos();
-            break;
-        case 7:
-            QueHorasVocePode();
-            break;
-        case 8:
-            AlcoolOuGasolina();
-            break;
-        case 9:
-            // Falta completar
-            ArPuroFinalmente();
-            break;
-        case 10:
-            Sair();
+            OPCOES[Escolha]();
             break;
         default:
-            Error();
+            alert(`Por favor, escolha um número entre 1 e 10`);
+            Main();
             break;
     }
 }
@@ -142,9 +136,10 @@ function QuantosQuartosSao() {
     alert(`O valor de ${Diarias} dia(s) de hospedagem é de R$${Preco}`);
 
     let NomeDoHospede = askForString(`Qual o nome do hospede?`);
-    let Confirmacao = askForString(`${NomeDoUsuario}, você confirma a hospedagem para ${NomeDoHospede} por ${Diarias}? S/N`).toUpperCase();
+    let Confirmacao = askForString(`${NomeDoUsuario}, você confirma a hospedagem para ${NomeDoHospede} por ${Diarias} dias? S/N`).toUpperCase();
     while (Confirmacao != "S" && Confirmacao != "N") {
-        Confirmacao = askForString(`Por favor, escolha S ou N`);
+        alert(`Por favor, escolha S ou N`);
+        Confirmacao = askForString(`${NomeDoUsuario}, você confirma a hospedagem para ${NomeDoHospede} por ${Diarias} dias? S/N`).toUpperCase();
     }
 
     alert(Confirmacao == "S" ? `${NomeDoUsuario}, reserva efetuada para ${NomeDoHospede}. O valor total é de R$${Preco}` : `${NomeDoUsuario}, reserva não efetuada`);
@@ -230,7 +225,7 @@ function ComSouZ() {
     function main() {
         let Escolha = askForNumber(`Bem-vindo a aba de hóspedes! Por favor, escolha uma opção\n[1] Cadastro\n[2] Pesquisar\n[3] Listar\n[4] Sair`)
 
-        switch(Escolha) {
+        switch (Escolha) {
             case 1:
                 cadastrar();
                 break;
@@ -295,7 +290,7 @@ function HoraDeComer() {
     let ValorTotal = 0;
     /*
     Tive que dividir o calculo em pedaços
-    */ 
+    */
     ValorTotal += (((NumerosDeConvidados * VALORES_COMIDA["Salgado"].QuantiaPorConvidado) * VALORES_COMIDA["Salgado"].Preco) * 0.01);
     ValorTotal += ((NumerosDeConvidados * VALORES_COMIDA["Cafe"].QuantiaPorConvidado) * VALORES_COMIDA["Cafe"].Preco);
     ValorTotal += ((NumerosDeConvidados * VALORES_COMIDA["Agua"].QuantiaPorConvidado) * VALORES_COMIDA["Agua"].Preco);
@@ -351,7 +346,7 @@ function AuditorioParaQuantos() {
 function QueHorasVocePode() {
     let DiaDoEvento = askForString(`Qual o dia do seu evento?`).toLocaleLowerCase();
     let DiaEncontrado = findWhitinObject(DIA_DA_SEMANA, DiaDoEvento);
-    let Range = {Minimo: 0, Maximo: 0};
+    let Range = { Minimo: 0, Maximo: 0 };
     /*
     DiaEncontrado tenta encontrar pelo constante "DIA_DA_SEMANA" o dia que o usuario colocou
     Ele retorna 2 valores:
@@ -410,12 +405,12 @@ function AlcoolOuGasolina() {
     let GasolinaStarkPetrol = askForNumber(`Qual o valor da gasolina no posto Stark Petrol?`) * QUANTIDADE_DE_LITROS;
 
     let MaisBarato = {
-        "Gasolina" : {
+        "Gasolina": {
             Posto: null,
             Preco: null
         },
 
-        "Alcool" : {
+        "Alcool": {
             Posto: null,
             Preco: null
         }
@@ -444,15 +439,63 @@ function AlcoolOuGasolina() {
 }
 
 function ArPuroFinalmente() {
+    let ListaDeEmpresas = [];
 
-}
+    function pegar_o_menor_orcamento() {
+        let MenorOrcamento = Infinity;
+        let Empresa = null;
+        for (let Index in ListaDeEmpresas) {
+            if (ListaDeEmpresas[Index].Preco < MenorOrcamento) {
+                MenorOrcamento = ListaDeEmpresas[Index].Preco;
+                Empresa = ListaDeEmpresas[Index].Nome;
+            }
+        }
 
-function Error() {
-    alert(`Por favor, escolha um número entre 1 e 10`);
-    Main();
+        return { Nome: Empresa, Valor: MenorOrcamento }
+    }
+
+    function main() {
+        let NomeDaEmpresa = askForString(`Qual o nome da empresa?`);
+        let ValorCobrado = askForNumber(`Qual o valor por aparelho?`);
+        let QuantidadeDeAparelhos = askForNumber(`Qual a quantidade de aparelhos?`);
+        let PorcentagemDesconto = askForNumber(`Qual a porcentagem de desconto?`);
+        let QuantidadeMinimaParaDesconto = askForNumber(`Qual o número mínimo de aparelhos para conseguir o desconto?`);
+
+        let ValorTotal = QuantidadeDeAparelhos < QuantidadeMinimaParaDesconto ? (ValorCobrado * QuantidadeDeAparelhos) :
+            (ValorCobrado * QuantidadeDeAparelhos) * ((100 - PorcentagemDesconto) / 100);
+
+        let EmpresaProperty = new EmpresaArCondicionado(NomeDaEmpresa, ValorTotal);
+        ListaDeEmpresas.push(EmpresaProperty)
+
+        if (ListaDeEmpresas.length <= 1) {
+            alert(`Por favor ${NomeDoUsuario}, insira mais uma empresa para completar a quantidade mínima de empresas`);
+            main();
+            return;
+        }
+
+        let Confirmacao = askForString(`Deseja informar novos dados, ${NomeDoUsuario}? (S/N)`).toUpperCase();
+        while (Confirmacao != "S" && Confirmacao != "N") {
+            alert(`Por favor, escolha S ou N`);
+            Confirmacao = askForString(`Deseja informar novos dados, ${NomeDoUsuario}? (S/N)`).toUpperCase();
+        }
+
+        if (Confirmacao == "S") {
+            main();
+            return;
+        }
+
+        let MenorOrcamento = pegar_o_menor_orcamento();
+        alert(`O orçamento menor de menor valor é o [${MenorOrcamento.Nome} por R$ ${MenorOrcamento.Valor.toFixed(2)}]`);
+
+        Main();
+        return;
+    }
+
+    main();
 }
 
 function Sair() {
+    alert(`Muito obrigado por usar o hotel ${NomeDoHotel}, ${NomeDoUsuario}`);
     window.close();
 }
 
