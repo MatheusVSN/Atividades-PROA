@@ -428,8 +428,8 @@ function AlcoolOuGasolina() {
     }
 
     pegar_posto_mais_barato();
-    let Comparacao = (MaisBarato.Alcool.Preco) / (MaisBarato.Alcool.Preco + MaisBarato.Alcool.Preco) * 100;
-    if (Comparacao <= 30) {
+    let Comparacao = (MaisBarato.Alcool.Preco) / (MaisBarato.Alcool.Preco + MaisBarato.Gasolina.Preco) * 100;
+    if (Comparacao <= 70) {
         alert(`${NomeDoUsuario}, é mais barato abastecer com Alcool no posto ${MaisBarato["Alcool"].Posto}`);
         Main();
         return
