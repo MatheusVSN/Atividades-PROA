@@ -39,6 +39,25 @@ function askForString(argument) {
     return PresumedString;
 }
 
+function replaceDuplicateNumber(Array) {
+
+    function recursive() {
+        let NumbersArray = {};
+        for (let index = 0; index < Array.length; index += 1) {
+            if (NumbersArray[Array[index]]) {
+                let newNumber = askForNumber(`O número ${Array[index]} está duplicado.\nPor favor, coloque outro número.`);
+                Array[index] = newNumber;
+                recursive();
+            } else {
+                NumbersArray[Array[index]] = 1;
+            }
+        }
+    }
+
+    recursive();
+
+    return Array;
+}
 
 function exercicio_1() {
     let FirstNumber = askForNumber("Digite um número");
@@ -70,6 +89,8 @@ function exercicio_3() {
     let ThirdNumber = askForNumber("Digite o terceiro número");
 
     NumbersArray.push(FirstNumber, SecondNumber, ThirdNumber);
+    NumbersArray = replaceDuplicateNumber(NumbersArray);
+
 
     let Highest = getTheHighestNumber(NumbersArray, 1)[0];
 
@@ -78,11 +99,13 @@ function exercicio_3() {
 
 function exercicio_4() {
     let NumbersArray = [];
-    let FirstNumber = askForNumber("Digite o primeiro número");
-    let SecondNumber = askForNumber("Digite o segundo número");
-    let ThirdNumber = askForNumber("Digite o terceiro número");
+    for (let index = 1; NumbersArray.length < 3; index += 1) {
+        let Number = askForNumber(`[${index}] Digite um número`);
+        NumbersArray.push(Number);
+    }
 
-    NumbersArray.push(FirstNumber, SecondNumber, ThirdNumber);
+    NumbersArray = replaceDuplicateNumber(NumbersArray);
+
     let HighestNumbers = getTheHighestNumber(NumbersArray, 2);
     let Calculations = HighestNumbers[0] + HighestNumbers[1];
 
@@ -115,6 +138,8 @@ function exercicio_6() {
         let PresumedNumber = askForNumber(`[${index}] Informe um número`);
         NumbersArray.push(PresumedNumber);
     }
+
+    NumbersArray = replaceDuplicateNumber(NumbersArray);
 
     let FirstNumber = NumbersArray[0];
     let LastNumber = NumbersArray[NumbersArray.length - 1];
