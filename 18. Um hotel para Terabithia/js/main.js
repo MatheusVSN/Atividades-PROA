@@ -363,7 +363,7 @@ function QueHorasVocePode() {
     let HorarioDito = askForNumber(`Qual a hora do seu evento?`);
     while (HorarioDito < 0 || HorarioDito > 24) {
         alert(HorarioDito < 0 ? `Por favor, insira um número maior que 0` : `Por favor, insira um número menor que 24`);
-        HorarioDito = askForNumber(`Qual a hora do seu evento>`);
+        HorarioDito = parseInt(askForNumber(`Qual a hora do seu evento>`));
     }
 
     if (DiaEncontrado.index <= 1) {
@@ -378,7 +378,7 @@ function QueHorasVocePode() {
         }
 
         let NomeDaEmpresa = askForString(`Qual o nome da empresa?`);
-        alert(`Restaurante reservado para ${NomeDaEmpresa}. ${DiaDoEvento} as ${HorarioDito}`);
+        alert(`Restaurante reservado para ${NomeDaEmpresa}. ${DiaDoEvento} as ${HorarioDito}hs`);
         Main();
         return;
     }
@@ -394,7 +394,7 @@ function QueHorasVocePode() {
     }
 
     let NomeDaEmpresa = askForString(`Qual o nome da empresa?`);
-    alert(`Restaurante reservado para ${NomeDaEmpresa}. ${DiaDoEvento} as ${HorarioDito}`);
+    alert(`Restaurante reservado para ${NomeDaEmpresa}. ${DiaDoEvento} as ${HorarioDito}hs`);
     Main();
 }
 
