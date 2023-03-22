@@ -467,6 +467,8 @@ function ArPuroFinalmente() {
         let EmpresaProperty = new EmpresaArCondicionado(NomeDaEmpresa, ValorTotal);
         ListaDeEmpresas.push(EmpresaProperty)
 
+        alert(`O serviço de ${NomeDaEmpresa} custará R$ ${ValorTotal.toFixed(2)}`);
+
         if (ListaDeEmpresas.length <= 1) {
             alert(`Por favor ${NomeDoUsuario}, insira mais uma empresa para completar a quantidade mínima de empresas`);
             main();
