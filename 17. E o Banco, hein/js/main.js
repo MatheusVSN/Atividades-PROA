@@ -45,7 +45,10 @@ function ask_for_string(string){
 function check_for_password() {
     let PresumedPassword = Number(prompt(`Olá ${Nome}, digite a sua senha`));
 
-    return (PresumedPassword == PASSWORD)
+    while (PresumedPassword != PASSWORD) {
+        alert(`A senha informada está incorreta`);
+        PresumedPassword = Number(prompt(`Olá ${Nome}, digite a sua senha`));
+    }
 }
 
 function inicio() {
@@ -53,43 +56,23 @@ function inicio() {
 
     switch (Escolha) {
         case 1:
-            if (check_for_password() == false) {
-                alert(`A senha informada está incorreta`);
-                inicio();
-                return;
-            }
+            check_for_password();
             ver_saldo();
             break;
         case 2:
-            if (check_for_password() == false) {
-                alert(`A senha informada está incorreta`);
-                inicio();
-                return;
-            }
+            check_for_password();
             ver_extrato();
             break;
         case 3:
-            if (check_for_password() == false) {
-                alert(`A senha informada está incorreta`);
-                inicio();
-                return;
-            }
+            check_for_password();
             fazer_saque();
             break;
         case 4:
-            if (check_for_password() == false) {
-                alert(`A senha informada está incorreta`);
-                inicio();
-                return;
-            }
+            check_for_password();
             fazer_deposito();
             break;
         case 5:
-            if (check_for_password() == false) {
-                alert(`A senha informada está incorreta`);
-                inicio();
-                return;
-            }
+            check_for_password();
             fazer_transferencia();
             break;
         case 6:
